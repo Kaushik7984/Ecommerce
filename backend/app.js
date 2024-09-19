@@ -1,11 +1,20 @@
-const express = require("express")
+const express = require("express");
+const app = express();
 
-const app = express()
+const errorMiddleware = require("./middlewares/error");
 
-//Routes imports
-const product = require("./routes/productRoute")
+// Middleware to parse JSON data
+app.use(express.json());
 
-app.use("/api/v1", product)
+// Routes imports
+const product = require("./routes/productRoute");
+const user = require("./routes/userRoute");
 
+// Use routes
+app.use("/api/v1", product);
+app.use("/api/v1", user);
 
-module.exports = app
+//Use middleware for error
+app.use(errorMiddleware);
+
+module.exports = app;
