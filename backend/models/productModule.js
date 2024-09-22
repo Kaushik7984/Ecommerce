@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
     required: [true, "Please Enter product Price"],
     min: [0, "Price must be a positive number"], // Ensures price is a positive number
   },
-  rating: {
+  ratings: {
     type: Number,
     default: 0,
   },
@@ -48,6 +48,11 @@ const productSchema = new mongoose.Schema({
   },
   reviews: [
     {
+      user: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+        required: true,
+      },
       name: {
         type: String,
         required: true,
@@ -64,6 +69,11 @@ const productSchema = new mongoose.Schema({
       },
     },
   ],
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
