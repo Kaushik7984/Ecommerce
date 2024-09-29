@@ -25,20 +25,23 @@ exports.createProduct = catchAsyncError(async (req, res, next) => {
 
 // Get All Products
 
-exports.getAllProduct = catchAsyncError(async (req, res) => {
-  const resultPerPage = 5;
-  const productCount = await Product.countDocuments();
+exports.getAllProduct = catchAsyncError(async (req, res,next) => {
+
+  const resultPerPage = 8;
+  const productsCount = await Product.countDocuments();
 
   const apifeatures = new ApiFeatures(Product.find(), req.query)
     .search()
     .filter()
     .pagination(resultPerPage);
   const products = await apifeatures.query;
+    // return next(new ErrorHandler("this is Toast Error for testing", 500));
+
 
   res.status(200).json({
     success: true,
     products,
-    productCount
+    productsCount
   });
 });
 
@@ -54,7 +57,6 @@ exports.getProductDetails = catchAsyncError(async (req, res, next) => {
   res.status(200).json({
     success: true,
     product,
-    productCount,
   });
 });
 

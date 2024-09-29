@@ -42,28 +42,32 @@ const productSchema = new mongoose.Schema({
     max: [9999, "Stock cannot exceed 9999"],
     default: 1,
   },
-  numOfReview: {
+  numOfReviews: {
     type: Number,
     default: 0,
   },
   reviews: [
     {
       user: {
+        default:"kaushik",
         type: mongoose.Schema.ObjectId,
         ref: "User",
         required: true,
       },
       name: {
+        default:"kaushik",
         type: String,
         required: true,
       },
       rating: {
+        default:2,
         type: Number,
         required: true,
         min: [0, "Rating must be a positive number"],
         max: [5, "Rating cannot exceed 5"], // Assuming rating is between 0 and 5
       },
       comment: {
+        default:"sdf gdfg hf ghj cvb n",
         type: String,
         required: true,
       },
