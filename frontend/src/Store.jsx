@@ -1,15 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk"; // Using regular redux-thunk
 import { composeWithDevTools } from "redux-devtools-extension";
+import { productReducer,productDetailsReducer } from "./reducers/productReducer";
 
-// Placeholder reducer (you can replace this with your actual reducers)
-const placeholderReducer = (state = {}, action) => {
-  return state;
-};
-
-// Combine all reducers (currently just the placeholder)
 const reducer = combineReducers({
-  placeholder: placeholderReducer,
+ products:productReducer,
+ productDetails:productDetailsReducer
 });
 
 const initialState = {};

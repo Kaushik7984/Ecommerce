@@ -6,6 +6,8 @@ import Header from "./components/layout/Header/Header.jsx"
 import Footer from "./components/layout/Footer/Footer.jsx"
 import WebFont from "webfontloader";
 import Home from './components/Home/Home.jsx';
+// import Loader from './components/layout/loader/Loader.jsx';
+import ProductDetails from './components/Product/ProductDetails.jsx'
 
 
 function App() {
@@ -24,7 +26,10 @@ function App() {
     <Router>
       <Header />
       <Routes>
-      <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        {/* <Route path="/loading" element={<Loader />} /> //this is for test */}
+
       </Routes>
       <Footer />
     </Router>

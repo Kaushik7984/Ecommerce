@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './App'; 
 import store from './Store'; 
+import ToastContainer from './components/Home/ToastContainer';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  
     <Provider store={store}>
+      <ToastContainer />
       <App />
     </Provider>
-  </React.StrictMode>
+
 );

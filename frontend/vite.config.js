@@ -1,12 +1,22 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
+  plugins: [react()],
+  server: {
+    proxy: {
+      // Proxy all requests starting with `/api` to the backend server
+      '/api': {
+        target: 'http://localhost:4000', // Backend server URL
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''), // Optional: modify the path if needed
+      },
+    },
+  },
   optimizeDeps: {
-    // Force Vite to treat 'redux-thunk' as a CommonJS dependency
-    include: ['redux-thunk'],
+    include: ["redux-thunk"],
     esbuildOptions: {
-      // Mark redux-thunk as external to avoid ES module import issues
-      external: ['redux-thunk'],
+      external: ["redux-thunk"],
     },
   },
 });
