@@ -9,7 +9,7 @@ const ReviewCard = ({ review }) => {
         edit: false,
         color: "rgba(20,20,20,0.1)",
         activeColor: "tomato",
-        size: window.innerWidth < 600 ? 18 : 22,
+        size: window.innerWidth < 600 ? 20 : 25,
         value: review.rating,
         isHalf: true,
       };

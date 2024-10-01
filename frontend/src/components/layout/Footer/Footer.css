@@ -1,7 +1,7 @@
 footer {
     margin-top: 10vmax;
     padding: 2vmax;
-    background-color: rgb(34, 33, 33);
+    background-color: #222121;
     color: white;
     display: flex;
     align-items: flex-start;
@@ -20,37 +20,39 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .leftFooter > h4 {
     font-family: "Roboto", sans-serif;
-    font-size: 1.2vmax;
-    margin-bottom: 1vmax;
+    font-size: 1.3vmax;
+    margin-bottom: 1.5vmax;
 }
 
 .leftFooter > p {
-    text-align: center;
     font-size: 1.1vmax;
     font-family: "Lucida Sans", Geneva, Verdana, sans-serif;
+    margin-bottom: 1vmax;
 }
 
 .leftFooter > img {
     width: 8vmax;
-    margin: 1vmax;
+    margin: 1.5vmax;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease-in-out;
 }
 
 .leftFooter > img:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .midFooter {
     text-align: center;
+    flex: 2;
 }
 
 .midFooter > h1 {
-    font-size: 3.5vmax;
+    font-size: 3.2vmax;
     font-family: "Roboto", sans-serif;
     color: #eb4034;
     margin-bottom: 1.5vmax;
@@ -59,21 +61,22 @@ footer {
 .midFooter > p {
     max-width: 80%;
     font-family: "Gill Sans", Calibri, "Trebuchet MS", sans-serif;
-    margin: 0.5vmax auto;
-    font-size: 1.1vmax;
+    margin: 0.7vmax auto;
+    font-size: 1.2vmax;
 }
 
 .rightFooter {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .rightFooter > h4 {
     font-family: "Roboto", sans-serif;
-    font-size: 1.4vmax;
+    font-size: 1.3vmax;
     text-decoration: underline;
-    margin-bottom: 1vmax;
+    margin-bottom: 1.5vmax;
 }
 
 .rightFooter > a {
@@ -82,9 +85,39 @@ footer {
     font-family: "Gill Sans", Calibri, "Trebuchet MS", sans-serif;
     color: white;
     transition: color 0.3s ease;
-    margin: 0.3vmax;
+    margin: 0.5vmax;
 }
 
 .rightFooter > a:hover {
     color: #eb4034;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .midFooter > h1 {
+        font-size: 4vmax;
+    }
+
+    .midFooter > p {
+        font-size: 1.6vmax;
+    }
+
+    .leftFooter > h4,
+    .rightFooter > h4 {
+        font-size: 2vmax;
+    }
+
+    .leftFooter > p,
+    .rightFooter > a {
+        font-size: 1.8vmax;
+    }
+    
+    .leftFooter > img {
+        width: 10vmax;
+    }
 }

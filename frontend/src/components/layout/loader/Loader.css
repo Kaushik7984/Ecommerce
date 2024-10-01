@@ -1,24 +1,32 @@
 .loading {
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
-    display: grid;
-    place-items: center;
-    max-width: 100%;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  display: grid;
+  place-items: center;
+  max-width: 100%;
+  overflow: hidden; /* Prevent any scrolling */
+}
+
+.loading > div {
+  width: 8vmax;
+  height: 8vmax;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.742);
+  border-radius: 50%;
+  animation: loadingRotate 600ms linear infinite;
+}
+
+@keyframes loadingRotate {
+  100% {
+      transform: rotate(360deg);
   }
-  
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
   .loading > div {
-    width: 10vmax;
-    height: 10vmax;
-    border-bottom: 5px solid rgba(0, 0, 0, 0.742);
-  
-    border-radius: 50%;
-  
-    animation: loadingRotate 500ms linear infinite;
+      width: 15vmax;
+      height: 15vmax;
+      border-bottom: 4px solid rgba(0, 0, 0, 0.742);
   }
-  
-  @keyframes loadingRotate {
-    to {
-      transform: rotateZ(360deg);
-    }
-  }
+}

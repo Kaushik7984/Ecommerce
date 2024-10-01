@@ -9,10 +9,11 @@ import Loader from "../layout/Loader/Loader";
 import toast from 'react-hot-toast';
 import ToastContainer from "./ToastContainer";
 
+
 const Home = () => {
 
     const dispatch = useDispatch();
-    const { loading, error, products, productsCount } = useSelector(state => state.products)
+    const { loading, error, products} = useSelector(state => state.products)
     const [hasShownError, setHasShownError] = useState(false);
 
     useEffect(() => {

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProductDetails, clearErrors } from "../../actions/productAction";
 import ReviewCard from "./ReviewCard.jsx";
 import Loader from "../layout/Loader/Loader";
-// import MetaData from "../layout/MetaData";
+import MetaData from "../layout/MetaData.jsx";
 import ToastContainer from "../Home/ToastContainer.jsx";
 import toast from "react-hot-toast";
 import ReactStars from "react-rating-stars-component";
@@ -33,7 +33,7 @@ const ProductDetails = () => {
     edit: false,
     color: "rgba(20,20,20,0.1)",
     activeColor: "tomato",
-    size: window.innerWidth < 600 ? 18 : 22,
+    size: window.innerWidth < 600 ? 20 : 25,
     value:  product ? product.ratings : 0,
     isHalf: true,
   };
@@ -45,7 +45,7 @@ const ProductDetails = () => {
         <Loader />
       ) : (
         <Fragment>
-          {/* <MetaData title={`${product.name} -- ECOMMERCE`} /> */}
+          <MetaData title={`${product.name}/Ecommerce`} />
           <div className="ProductDetails">
             <div>
               <Carousel>

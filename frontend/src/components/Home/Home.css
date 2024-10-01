@@ -1,5 +1,6 @@
 .banner {
-    background-image: url("../../images/cover.jfif");
+    background-image: url("bg.avif");
+    /* background-color: peru; */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -9,16 +10,25 @@
     text-align: center;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .banner > h1 {
     margin: 5vmax;
     font: 600 2.5vmax "Roboto";
+    /* background-color: rgba(105, 104, 104, 0.068); */
+    /* border-radius: 50px; */
+
+    text-shadow: 2px 2px 5px rgba(249, 249, 249, 0.525);
+    
+    /* padding: 20px; */
+
 }
 
 .banner > p {
     font: 300 1.4vmax "Lucida Sans";
+    text-shadow: 2px 2px 5px rgba(249, 249, 249, 0.525);
+
 }
 
 .banner > a > button {
@@ -26,7 +36,7 @@
     cursor: pointer;
     background-color: white;
     border: 1px solid white;
-    border-radius: 0;
+    border-radius: 2px;
     padding: 1vmax;
     transition: all 0.5s;
     width: 9vmax;
@@ -80,6 +90,7 @@
     transition: all 0.5s;
     padding-bottom: 0.5vmax;
     border: 0.5px solid rgba(128, 128, 128, 0.151);
+    border-radius: 5px;
 }
  
 .productCard > img {
