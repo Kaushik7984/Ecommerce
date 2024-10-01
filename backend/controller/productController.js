@@ -14,19 +14,11 @@ exports.createProduct = catchAsyncError(async (req, res, next) => {
     success: true,
     product,
   });
-
-  //  catch (error) {
-  //   res.status(400).json({
-  //     success: false,
-  //     message: error.message,
-  //   });
-  // }
 });
 
 // Get All Products
 
-exports.getAllProduct = catchAsyncError(async (req, res,next) => {
-
+exports.getAllProduct = catchAsyncError(async (req, res) => {
   const resultPerPage = 8;
   const productsCount = await Product.countDocuments();
 
@@ -34,14 +26,17 @@ exports.getAllProduct = catchAsyncError(async (req, res,next) => {
     .search()
     .filter()
     .pagination(resultPerPage);
-  const products = await apifeatures.query;
-    // return next(new ErrorHandler("this is Toast Error for testing", 500));
 
+  let products = await apifeatures.query;
+
+  let filteredProductsCount = products.length;
 
   res.status(200).json({
     success: true,
     products,
-    productsCount
+    productsCount,
+    resultPerPage,
+    filteredProductsCount,
   });
 });
 
@@ -141,7 +136,6 @@ exports.createProductReview = catchAsyncError(async (req, res, next) => {
     success: true,
   });
 });
-
 
 // Get All Reviews of a product
 exports.getProductReviews = catchAsyncError(async (req, res, next) => {
