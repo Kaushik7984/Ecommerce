@@ -18,13 +18,15 @@ const ToastContainer = () => {
                     borderRadius: '8px',
                     padding: '16px',
                     border: '1px solid #e0e0e0',
+                    marginRight:"100px"
                 },
 
                 // Success type (simple green text)
                 success: {
                     style: {
                         background: '#ffffff',
-                        color: '#2e7d32', // Green text for success
+                        color: '#2e7d32',
+                    
                     },
                 },
 
@@ -33,6 +35,7 @@ const ToastContainer = () => {
                     style: {
                         background: '#ffffff',
                         color: '#d32f2f', // Red text for error
+                       
                     },
                 },
 

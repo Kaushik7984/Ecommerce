@@ -1,25 +1,36 @@
-// import { Rating } from "@material-ui/lab";
-import React from "react";
+import React, { useState } from "react";
 import profilePng from "../../images/Profile.png";
-import ReactStars from "react-rating-stars-component"
-
+import { Rating } from "@material-ui/lab";
+import './ReviewCard.css';
 
 const ReviewCard = ({ review }) => {
-    const options = {
-        edit: false,
-        color: "rgba(20,20,20,0.1)",
-        activeColor: "tomato",
-        size: window.innerWidth < 600 ? 20 : 25,
-        value: review.rating,
-        isHalf: true,
-      };
+  const [isExpanded, setIsExpanded] = useState(false);
+  const isLongComment = review.comment.length > 100;
+
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   return (
     <div className="reviewCard">
       <img src={profilePng} alt="User" />
       <p>{review.name}</p>
-      <ReactStars {...options} />
-      <span className="reviewCardComment">{review.comment}</span>
+      <Rating
+        name="read-only"
+        value={review.rating}
+        precision={0.5}
+        readOnly
+        size={window.innerWidth < 600 ? "small" : "medium"}
+        style={{ color: "tomato" }}
+      />
+      <span className="reviewCardComment">
+        {isExpanded || !isLongComment ? review.comment : `${review.comment.slice(0, 100)}...`}
+      </span>
+      {isLongComment && (
+        <button className="viewMoreButton" onClick={toggleExpand}>
+          {isExpanded ? "View Less" : "View More"}
+        </button>
+      )}
     </div>
   );
 };

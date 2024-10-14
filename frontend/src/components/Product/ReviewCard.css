@@ -1,0 +1,72 @@
+.reviewCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 10px;
+    max-width: 400px; /* Set a max-width for larger screens */
+    width: 100%; /* Make it responsive */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .reviewCard:hover {
+    transform: translateY(-2px);
+  }
+  
+  .reviewCard img {
+    width: 50px; /* Adjust image size */
+    height: 50px;
+    border-radius: 50%; /* Make the image circular */
+    margin-bottom: 10px;
+  }
+  
+  .reviewCard p {
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  .reviewCardComment {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .viewMoreButton {
+    background-color: transparent;
+    border: none;
+    color: #c0392b; /* Primary color for the button */
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  
+  .viewMoreButton:hover {
+    color: #b0301e; /* Darker shade on hover */
+  }
+  
+  /* Media query for responsiveness */
+  @media (max-width: 600px) {
+    .reviewCard {
+      padding: 12px;
+    }
+  
+    .reviewCard img {
+      width: 40px; /* Smaller image size for mobile */
+      height: 40px;
+    }
+  
+    .reviewCardComment {
+      font-size: 12px; /* Smaller text for mobile */
+    }
+  
+    .viewMoreButton {
+      font-size: 12px; /* Smaller button text for mobile */
+    }
+  }
+  

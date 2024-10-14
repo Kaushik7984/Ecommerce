@@ -8,9 +8,9 @@ import Loader from "../layout/Loader/Loader";
 import MetaData from "../layout/MetaData.jsx";
 import ToastContainer from "../Home/ToastContainer.jsx";
 import toast from "react-hot-toast";
-import ReactStars from "react-rating-stars-component";
-import { useParams } from "react-router-dom";   
-
+import { Rating } from "@material-ui/lab";
+import { useParams } from "react-router-dom";  
+import { addItemsToCart } from "../../actions/cartAction.js"; 
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -20,22 +20,34 @@ const ProductDetails = () => {
     (state) => state.productDetails
   );
 
+  const [quantity, setQuantity] = useState(1);
+  const [showAllReviews, setShowAllReviews] = useState(false); // Added state to manage review visibility
+
+  const increaseQuantity = () => {
+    if (product.stock <= quantity) return;
+    setQuantity((prevQty) => prevQty + 1);
+  };
+
+  const decreaseQuantity = () => {
+    if (1 >= quantity) return;
+    setQuantity((prevQty) => prevQty - 1);
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addItemsToCart(id, quantity));
+    toast.success("Item Added To Cart");
+  };
+
   useEffect(() => {
     if (error) {
       toast.error(error);
       dispatch(clearErrors());
     }
-
     dispatch(getProductDetails(id)); 
   }, [dispatch, id, error]);
 
-  const options = {
-    edit: false,
-    color: "rgba(20,20,20,0.1)",
-    activeColor: "tomato",
-    size: window.innerWidth < 600 ? 20 : 25,
-    value:  product ? product.ratings : 0,
-    isHalf: true,
+  const toggleReviews = () => {
+    setShowAllReviews(!showAllReviews); // Toggle the showAllReviews state
   };
 
   return (
@@ -67,34 +79,35 @@ const ProductDetails = () => {
                 <p>Product # {product._id}</p>
               </div>
               <div className="detailsBlock-2">
-                <ReactStars {...options} />
-                <span>
-                  ({product.numOfReviews} Reviews)
-                </span>
+                <Rating
+                  name="product-rating"
+                  value={product ? product.ratings : 0}
+                  readOnly
+                  precision={0.5} 
+                  style={{ color: "tomato" }}   
+                />
+                <span>({product.numOfReviews} Reviews)</span>
               </div>
               <div className="detailsBlock-3">
                 <h1>{`₹${product.price}`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
-                    <button>-</button>
-                    <input type="number" value="1" />
-                    <button>+</button>
+                    <button onClick={decreaseQuantity}>-</button>
+                    <input readOnly type="number" value={quantity} />
+                    <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button>Add to Cart</button>
+                  <button onClick={addToCartHandler}>Add to Cart</button>
                 </div>
-
                 <p>
                   Status:
-                  <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-                    {product.Stock < 1 ? "OutOfStock" : "InStock"}
+                  <b className={product.stock < 1 ? "redColor" : "greenColor"}>
+                    {product.stock < 1 ? "OutOfStock" : "InStock"}
                   </b>
                 </p>
               </div>
-
               <div className="detailsBlock-4">
                 Description : <p>{product.description}</p>
               </div>
-
               <button className="submitReview">Submit Review</button>
             </div>
           </div>
@@ -103,9 +116,12 @@ const ProductDetails = () => {
 
           {product.reviews && product.reviews[0] ? (
             <div className="reviews">
-              {product.reviews.map((review) => (
+              {product.reviews.slice(0, showAllReviews ? product.reviews.length : 2).map((review) => (
                 <ReviewCard key={review._id} review={review} />
               ))}
+              <span className="viewMore" onClick={toggleReviews}>
+                {showAllReviews ? "View Less" : "View More"}
+              </span>
             </div>
           ) : (
             <p className="noReviews">No Reviews Yet</p>
