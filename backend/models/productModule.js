@@ -49,25 +49,21 @@ const productSchema = new mongoose.Schema({
   reviews: [
     {
       user: {
-        default:"kaushik",
         type: mongoose.Schema.ObjectId,
         ref: "User",
         required: true,
       },
       name: {
-        default:"kaushik",
         type: String,
         required: true,
       },
       rating: {
-        default:2,
         type: Number,
         required: true,
         min: [0, "Rating must be a positive number"],
         max: [5, "Rating cannot exceed 5"], // Assuming rating is between 0 and 5
       },
       comment: {
-        default:"sdf gdfg hf ghj cvb n",
         type: String,
         required: true,
       },
