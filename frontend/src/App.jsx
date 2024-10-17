@@ -30,6 +30,7 @@ import Payment from "./components/Cart/Payment.jsx";
 import OrderSuccess from "./components/Cart/OrderSuccess.jsx";
 import MyOrders from "./components/Order/MyOrders.jsx";
 import OrderDetails from "./components/Order/OrderDetails.jsx";
+import Dashboard from "./components/admin/Dashboard.jsx"
 
 
 function App() {
@@ -94,6 +95,7 @@ function App() {
           <Route path="/success" element={<OrderSuccess />} />
           <Route path="/orders" element={<MyOrders />} />
           <Route path="/order/:id" element={<OrderDetails />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
 
 
         </Route>

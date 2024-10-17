@@ -13,10 +13,10 @@
     color: rgb(16, 16, 16);
 }
 .banner > img{
-    width: 25vmax;
+    width: 20vmax;
     position: absolute;
-    top: -45px;
-    left: 80px;
+    top:0;
+    left: 0;
 }
 
 .banner > h1 {
