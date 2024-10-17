@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./app.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -19,10 +19,33 @@ import UpdateProfile from "./components/User/UpdateProfile.jsx";
 import UpdatePassword from "./components/User/UpdatePassword.jsx";
 import ForgotPassword from "./components/User/ForgotPassword.jsx";
 import ResetPassword from "./components/User/ResetPassword.jsx";
+import axios from "axios";
+import backend_url from "./components/url.js";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import Cart from "./components/Cart/Cart.jsx";
+import Shipping from "./components/Cart/Shipping.jsx";
+import ConfirmOrder from "./components/Cart/ConfirmOrder.jsx";
+import Payment from "./components/Cart/Payment.jsx";
+import OrderSuccess from "./components/Cart/OrderSuccess.jsx";
+import MyOrders from "./components/Order/MyOrders.jsx";
+import OrderDetails from "./components/Order/OrderDetails.jsx";
+
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
+  const [stripeApiKey, setStripeApiKey] = useState("");
+
+  async function getStripeApiKey() {
+    try {
+      const { data } = await axios.get(`${backend_url}/api/v1/stripeapikey`,{
+        withCredentials: true,
+      });
+      setStripeApiKey(data.stripeApiKey);
+    } catch (error) {
+      console.error("Error fetching Stripe API Key:", error);
+    }
+  }
 
   useEffect(() => {
     WebFont.load({
@@ -32,6 +55,7 @@ function App() {
     });
 
     store.dispatch(loadUser());
+    getStripeApiKey();
   }, []);
 
   return (
@@ -40,7 +64,6 @@ function App() {
       {isAuthenticated && <UserOptions user={user} />}
 
       <Routes>
-
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/products" element={<Products />} />
@@ -56,8 +79,24 @@ function App() {
           <Route path="/account" element={<Profile />} />
           <Route path="/me/update" element={<UpdateProfile />} />
           <Route path="/password/update" element={<UpdatePassword />} />
-        </Route>
+          <Route path="/shipping" element={<Shipping />} />
+          <Route path="/order/confirm" element={<ConfirmOrder />} />
+          {stripeApiKey && (
+            <Route
+              path="/process/payment"
+              element={
+                <Elements stripe={loadStripe(stripeApiKey)}>
+                  <Payment />
+                </Elements>
+              }
+            />
+          )}
+          <Route path="/success" element={<OrderSuccess />} />
+          <Route path="/orders" element={<MyOrders />} />
+          <Route path="/order/:id" element={<OrderDetails />} />
 
+
+        </Route>
       </Routes>
 
       <Footer />

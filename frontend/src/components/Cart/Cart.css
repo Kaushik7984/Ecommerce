@@ -125,8 +125,9 @@
   
   @media screen and (max-width: 600px) {
     .cartPage {
-      padding: 0;
+      padding: 10vmax 0;
       min-height: 60vh;
+      overflow: hidden;
     }
   
     .cartHeader {
@@ -141,7 +142,7 @@
     }
   
     .cartInput {
-      height: 20vmax;
+      height: 20vmax; 
     }
   
     .cartInput > button {

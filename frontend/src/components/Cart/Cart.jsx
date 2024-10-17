@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { cartItems = [] } = useSelector((state) => state.cart || {});
 
   const increaseQuantity = (id, quantity, stock) => {
@@ -29,6 +30,10 @@ const Cart = () => {
 
   const deleteCartItems = (id) => {
     dispatch(removeItemFromCart(id))
+  }
+
+  const checkoutHandler = () => {
+    navigate("/login?redirect=/shipping");
   }
 
   return (
@@ -67,11 +72,14 @@ const Cart = () => {
               <div></div>
               <div className="cartGrossProfitBox">
                 <p>Gross Total</p>
-                <p>{`₹600`}</p>
+                <p>{`₹${cartItems.reduce(
+                  (acc,item) => acc + item.quantity * item.price,
+                  0
+                )}`}</p>
               </div>
               <div></div>
               <div className="checkOutBtn">
-                <button>Check Out</button>
+                <button onClick={checkoutHandler}>Check Out</button>
               </div>
             </div>
 

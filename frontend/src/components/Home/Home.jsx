@@ -40,8 +40,8 @@ const Home = () => {
 
             <MetaData title={"Home"} />
             {loading ? (<Loader />) : (<Fragment>
-
-                <div className="banner">
+                <div className="banner"> 
+                    <img src="/logo.png" alt="" />
                     <p>Welcome to Ecommerce</p>
                     <h1>FIND AMAZING PRODUCTS BELOW</h1>
 

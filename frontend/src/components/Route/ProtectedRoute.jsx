@@ -1,13 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
+import Loader from "../layout/Loader/Loader";
 
 const ProtectedRoute = ({ isAdmin }) => {
   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
 
-  if (loading) return null; // or a loading spinner if you want
-
-  if (!isAuthenticated) {
+  if (loading) return <Loader />
+  
+  if (isAuthenticated === false) {
     return <Navigate to="/login" />;
   }
 

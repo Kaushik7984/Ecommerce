@@ -21,7 +21,7 @@ const ReviewCard = ({ review }) => {
         precision={0.5}
         readOnly
         size={window.innerWidth < 600 ? "small" : "medium"}
-        style={{ color: "tomato" }}
+        // style={{ color: "tomato" }}
       />
       <span className="reviewCardComment">
         {isExpanded || !isLongComment ? review.comment : `${review.comment.slice(0, 100)}...`}

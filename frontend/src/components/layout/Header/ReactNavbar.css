@@ -159,10 +159,11 @@
 
   .navLinks {
     flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+    align-items: center;    
   }
-
+  .navLinks .link {
+    padding: 1vmax;
+  }
   .navIcons {
     margin-top: 20px;
   }

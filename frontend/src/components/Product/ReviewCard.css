@@ -39,7 +39,7 @@
   .viewMoreButton {
     background-color: transparent;
     border: none;
-    color: #c0392b; /* Primary color for the button */
+    color: #c0392b;  
     cursor: pointer;
     margin-top: 8px;
     font-size: 14px;

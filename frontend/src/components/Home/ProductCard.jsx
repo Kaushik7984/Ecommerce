@@ -14,8 +14,8 @@ const ProductCard = ({ product }) => {
             value={product.ratings}
             precision={0.5}
             readOnly
-            size={window.innerWidth < 600 ? "small" : "medium"}
-            style={{ color: "tomato" }}
+            size={'small'}
+            // style={{ color: "tomato" }}
           />
           <span>({product.numOfReviews} Reviews)</span>
         </div>
