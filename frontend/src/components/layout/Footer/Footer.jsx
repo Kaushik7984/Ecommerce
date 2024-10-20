@@ -1,7 +1,7 @@
 import React from "react";
 import playStore from "../../../images/playstore.png";
 import appStore from "../../../images/Appstore.png";
-import { FaLinkedin, FaGithub, FaInstagram, FaFacebook, FaAppStore } from "react-icons/fa"; // Import icons
+import { LinkedIn, GitHub, Instagram } from "@material-ui/icons"; // Import icons from Material-UI
 import "./Footer.css";
 
 const Footer = () => {
@@ -24,14 +24,13 @@ const Footer = () => {
       <div className="rightFooter">
         <h4>Follow Us</h4>
         <a href="https://www.linkedin.com/in/kaushik-tapaniya-624142239/" target="_blank" rel="noopener noreferrer">
-          <FaLinkedin /> LinkedIn
+          <LinkedIn /> LinkedIn
         </a>
         <a href="https://github.com/Kaushik7984" target="_blank" rel="noopener noreferrer">
-          <FaGithub /> GitHub
+          <GitHub /> GitHub
         </a>
         <a href="http://instagram.com/kaushiiq_7x" target="_blank" rel="noopener noreferrer">
-          <FaInstagram /> Instagram
-        
+          <Instagram /> Instagram
         </a>
       </div>
     </footer>

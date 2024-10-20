@@ -1,28 +1,24 @@
 import React, { useState, Fragment } from "react";
 import { Link } from "react-router-dom";
+import { Search, ShoppingCart, Person } from "@material-ui/icons";
 import "./ReactNavbar.css";
-import { FaUser, FaSearch, FaShoppingCart } from "react-icons/fa";
 import logo from "../../../images/logo.png";
 
 const ReactNavbar = () => {
   const [menuToggle, setMenuToggle] = useState(false);
 
-  // Function to toggle the navbar visibility
   const menuToggleHandler = () => {
-    setMenuToggle((prev) => !prev);  // Toggle between true and false
+    setMenuToggle((prev) => !prev);
   };
 
-  // Function to close the navbar when a link or icon is clicked
   const closeBarOnClick = () => {
-    setMenuToggle(false);  // Close the navbar
+    setMenuToggle(false); // Close the navbar
   };
 
   return (
     <Fragment>
-      {/* Overlay that disables background interaction when the navbar is open */}
       {menuToggle && <div className="overlay" onClick={closeBarOnClick}></div>}
 
-      {/* Hamburger menu button */}
       <div className="menuBurger" onClick={menuToggleHandler}>
         <div className={`menuBurgerItem menuBurgerItem1 ${menuToggle ? "active" : ""}`} />
         <div className={`menuBurgerItem menuBurgerItem2 ${menuToggle ? "active" : ""}`} />
@@ -43,9 +39,9 @@ const ReactNavbar = () => {
           </div>
 
           <div className="navIcons">
-            <Link to="/search" onClick={closeBarOnClick}><FaSearch /></Link>
-            <Link to="/cart" onClick={closeBarOnClick}><FaShoppingCart /></Link>
-            <Link to="/account" onClick={closeBarOnClick}><FaUser /></Link>
+            <Link to="/search" onClick={closeBarOnClick}><Search /></Link>
+            <Link to="/cart" onClick={closeBarOnClick}><ShoppingCart /></Link>
+            <Link to="/account" onClick={closeBarOnClick}><Person /></Link>
           </div>
         </div>
       </nav>

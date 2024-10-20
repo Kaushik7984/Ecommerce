@@ -6,17 +6,20 @@ import Loader from "../layout/Loader/Loader";
 const ProtectedRoute = ({ isAdmin }) => {
   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
 
-  if (loading) return <Loader />
-  
-  if (isAuthenticated === false) {
-    return <Navigate to="/login" />;
+  if (loading === false) {
+    if (!isAuthenticated) {
+      return <Navigate to="/login" />;
+    }
+
+    if (isAdmin && user?.role !== "admin") {
+      return <Navigate to="/account" />;
+    }
+
+    return <Outlet />;
   }
 
-  if (isAdmin && user.role !== "admin") {
-    return <Navigate to="/login" />;
-  }
+  return <Loader />
 
-  return <Outlet />;
 };
 
 export default ProtectedRoute;

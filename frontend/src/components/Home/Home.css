@@ -30,19 +30,19 @@
 
 .banner > a > button {
     margin-bottom: 5vmax;
+    text-transform: capitalize;
     cursor: pointer;
     background-color: white;
     border: 1px solid white;
     border-radius: 2px;
-    padding: 1vmax;
+    padding: 10px 30px;
     transition: all 0.5s;
-    width: 9vmax;
     font: 500 1vmax "Roboto";
 }
 
 .banner > a > button:hover {
     background-color: rgba(255, 255, 255, 0);
-    color: white;
+    color: rgb(145, 145, 145);
 }
 
 .banner::after {
@@ -92,6 +92,7 @@
  
 .productCard > img {
     width: 14vmax;
+    height: 14vmax;
 }
 
 .productCard > div {
@@ -144,7 +145,7 @@
     }
     
     .banner > a > button {
-        width: 10vmax;
+        padding: 10px 30px;
         font: 500 2vmax "Roboto";
     }
     .productCard{

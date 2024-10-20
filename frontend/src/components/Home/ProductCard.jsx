@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Rating } from "@material-ui/lab";
 
 const ProductCard = ({ product }) => {
+  // console.log(product)
   return (
     <div>
       <Link className='productCard' to={`/product/${product._id}`}>

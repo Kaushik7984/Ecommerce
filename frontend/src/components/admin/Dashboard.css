@@ -1,0 +1,137 @@
+/* General dashboard layout */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background-color: #f8f9fa;
+}
+
+/* Dashboard container */
+.dashboardContainer {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  background-color: #ffffff;
+  overflow-y: auto;
+}
+
+/* Dashboard title */
+.dashboardContainer > h1 {
+  color: rgba(0, 0, 0, 0.7);
+  font: 500 2rem "Roboto", sans-serif;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+
+/* Summary section */
+.dashboardSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.dashboardSummary > div {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboardSummary > div > p {
+  background-color: #4675da;
+  color: #ffffff;
+  font: 300 1.5rem "Roboto", sans-serif;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  margin: 0 1rem;
+  border-radius: 8px;
+}
+
+/* Links to products, orders, and users */
+.dashboardSummaryBox2 {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.dashboardSummaryBox2 > a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font: 400 1rem "Roboto", sans-serif;
+  color: #000;
+  background-color: #ffdd99;
+  padding: 1rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboardSummaryBox2 > a:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Specific styles for different links */
+.dashboardSummaryBox2 > a:first-child {
+  background-color: #ff6e6e;
+  color: #ffffff;
+}
+
+.dashboardSummaryBox2 > a:nth-child(2) {
+  background-color: #ffb347;
+  color: #ffffff;
+}
+
+.dashboardSummaryBox2 > a:last-child {
+  background-color: #333;
+  color: #ffffff;
+}
+
+/* Line chart container */
+.lineChart {
+  width: 80%;
+  margin: 2rem auto;
+}
+
+/* Doughnut chart container */
+.doughnutChart {
+  width: 25vmax;
+  margin: 2rem auto;
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+  .dashboard {
+      grid-template-columns: 1fr;
+  }
+
+  .dashboardContainer {
+      border-left: none;
+      padding: 1rem;
+  }
+
+  .dashboardSummaryBox2 > a {
+      width: 6rem;
+      height: 6rem;
+      font-size: 0.9rem;
+      padding: 0.5rem;
+      margin: 1rem;
+  }
+
+  .lineChart, .doughnutChart {
+      width: 90%;
+  }
+}

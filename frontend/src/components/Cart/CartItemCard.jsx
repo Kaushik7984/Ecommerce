@@ -6,6 +6,7 @@ import { removeItemFromCart } from "../../actions/cartAction";
 const CartItemCard = ({ item, deleteCartItems}) => {
   return (
     <div className="CartItemCard">
+      
       <img src={item.image} alt="not show!" />
       <div>
        

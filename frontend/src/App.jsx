@@ -30,16 +30,26 @@ import Payment from "./components/Cart/Payment.jsx";
 import OrderSuccess from "./components/Cart/OrderSuccess.jsx";
 import MyOrders from "./components/Order/MyOrders.jsx";
 import OrderDetails from "./components/Order/OrderDetails.jsx";
-import Dashboard from "./components/admin/Dashboard.jsx"
-
+import Dashboard from "./components/Admin/Dashboard.jsx";
+import ProductList from "./components/Admin/ProductList.jsx";
+import NewProduct from "./components/Admin/NewProduct.jsx";
+import UpdateProduct from "./components/Admin/UpdateProduct.jsx";
+import OrderList from "./components/Admin/OrderList.jsx";
+import ProcessOrder from "./components/Admin/ProcessOrder.jsx";
+import UsersList from "./components/Admin/UsersList.jsx";
+import UpdateUser from "./components/Admin/UpdateUser.jsx";
+import ProductReviews from "./components/Admin/ProductReviews.jsx";
+import About from "./components/layout/About/About.jsx";
+import Contact from "./components/layout/Contact/Contact.jsx";
+import NotFound from "./components/layout/Not Found/NotFound.jsx";
 
 function App() {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
+  const { isAuthenticated, user, loading } = useSelector((state) => state.user);
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   async function getStripeApiKey() {
     try {
-      const { data } = await axios.get(`${backend_url}/api/v1/stripeapikey`,{
+      const { data } = await axios.get(`${backend_url}/api/v1/stripeapikey`, {
         withCredentials: true,
       });
       setStripeApiKey(data.stripeApiKey);
@@ -59,6 +69,10 @@ function App() {
     getStripeApiKey();
   }, []);
 
+  // if (loading) {
+  //   return null; 
+  // }
+
   return (
     <Router>
       <Header />
@@ -74,8 +88,11 @@ function App() {
         <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
 
-        {/* Protected Route */}
+{/* Protected Routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="/account" element={<Profile />} />
           <Route path="/me/update" element={<UpdateProfile />} />
@@ -95,12 +112,22 @@ function App() {
           <Route path="/success" element={<OrderSuccess />} />
           <Route path="/orders" element={<MyOrders />} />
           <Route path="/order/:id" element={<OrderDetails />} />
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-
-
         </Route>
-      </Routes>
 
+{/* Admin Protected Route */}
+        <Route element={<ProtectedRoute isAdmin={true} />}>
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/products" element={<ProductList />} />
+          <Route path="/admin/product" element={<NewProduct />} />
+          <Route path="/admin/product/:id" element={<UpdateProduct />} />
+          <Route path="/admin/orders" element={<OrderList />} />
+          <Route path="/admin/order/:id" element={<ProcessOrder />} />
+          <Route path="/admin/users" element={<UsersList />} />
+          <Route path="/admin/user/:id" element={<UpdateUser />} />
+          <Route path="/admin/reviews" element={<ProductReviews />} />
+        </Route>
+
+      </Routes>
       <Footer />
     </Router>
   );
