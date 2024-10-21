@@ -19,6 +19,34 @@ This is a fully functional Ecommerce website built using React, Redux, and Node.
 - **State Management**: Redux for state management, with local storage for persisting cart items
 - **Deployment**: [Deployment Platform]
 
+## Dependencies
+
+### Frontend Dependencies
+- `react` - Core React library.
+- `react-dom` - React library for DOM rendering.
+- `react-router-dom` - Routing for React applications.
+- `redux` - State management library.
+- `react-redux` - Integration of Redux with React.
+- `redux-thunk` - Middleware for Redux to handle asynchronous actions.
+- `axios` - Promise-based HTTP client for API requests.
+- `scss` or `sass` - CSS pre-processor for styling.
+- `react-icons` - Icon library for React components.
+- `material-ui` - styled feature like button,box,icon,etc.. for React components.
+
+### Backend Dependencies
+- `express` - Web framework for Node.js.
+- `mongoose` - MongoDB object modeling tool.
+- `dotenv` - Loads environment variables from a `.env` file.
+- `jsonwebtoken` - For generating and verifying JWT tokens.
+- `bcryptjs` - For password hashing and verification.
+- `cookie-parser` - Parses cookies attached to client requests.
+- `nodemailer` - For handling email functionality.
+- `cors` - Middleware for enabling CORS in Express.
+
+### Development Dependencies
+- `nodemon` - Automatically restarts the server on file changes.
+- `concurrently` - Allows running multiple npm scripts concurrently (e.g., frontend and backend).
+
 ## Installation
 
 1. Clone the repository:
