@@ -47,6 +47,7 @@ This is a fully functional Ecommerce website built using React, Redux, and Node.
 - `nodemon` - Automatically restarts the server on file changes.
 - `concurrently` - Allows running multiple npm scripts concurrently (e.g., frontend and backend).
 
+
 ## Installation
 
 1. Clone the repository:

@@ -9,7 +9,7 @@ const fileUpload = require("express-fileupload");
 const errorMiddleware = require("./middlewares/error");
 
 //config
-dotenv.config({ path: "backend/config/config.env" });
+dotenv.config({ path: "config/config.env" });
 
 app.use(
   cors({
