@@ -1,4 +1,4 @@
-const Product = require("../models/productModule");
+const Product = require("../models/productModel");
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncError = require("../middlewares/catchAsyncError");
 const ApiFeatures = require("../utils/apifeatures");
@@ -209,6 +209,7 @@ exports.createProductReview = catchAsyncError(async (req, res, next) => {
   });
 
   product.ratings = avg / product.reviews.length;
+  console.log(product.ratings)
 
   await product.save({ validateBeforeSave: false });
 
