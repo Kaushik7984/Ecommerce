@@ -40,3 +40,21 @@
 .MuiTypography-root {
   background-color: #fff !important;
 } 
+@media (max-width: 768px) {
+  .sidebar {
+   margin-top: 20px;
+   
+  }
+  .sidebar > a > img {
+    width: 280%;
+    transition: all 0.5s;
+  }
+  .sidebar a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.493);
+    font: 300 1.5rem "Roboto";
+    padding: 2rem;
+    transition: all 0.5s;
+
+  }
+}

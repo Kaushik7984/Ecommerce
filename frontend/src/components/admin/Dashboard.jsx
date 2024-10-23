@@ -100,7 +100,7 @@ const Dashboard = () => {
     datasets: [
       {
         label: "Stock Status",
-        backgroundColor: ["#00A6B4", "#6800B4"],
+        backgroundColor: ["#36A2EB", "#FF6384"],
         data: [inStock, outOfStock],
       },
     ],
@@ -112,6 +112,7 @@ const Dashboard = () => {
       <div className="dashboardContainer">
         <div className="name">Dashboard</div>
         <div className="dashboardSummary">
+
           <div className="dashboardCard redCard">
             <div className="cardIcon">
               <AttachMoneyIcon style={{ fontSize: 40 }} />
@@ -122,9 +123,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-
           <Link to="/admin/orders" className="dashboardCard orangeCard">
-
             <div className="cardIcon">
               <ShoppingCartIcon style={{ fontSize: 40 }} />
             </div>
@@ -135,7 +134,6 @@ const Dashboard = () => {
           </Link>
 
           <Link to="/admin/products" className="dashboardCard blueCard">
-
             <div className="cardIcon">
               <CategoryIcon style={{ fontSize: 40 }} />
             </div>
@@ -143,11 +141,9 @@ const Dashboard = () => {
               <p>PRODUCTS</p>
               <h3>{products.length}</h3>
             </div>
-
           </Link>
 
           <Link to="/admin/users" className="dashboardCard greenCard">
-
             <div className="cardIcon">
               <PeopleIcon style={{ fontSize: 40 }} />
             </div>
@@ -155,7 +151,6 @@ const Dashboard = () => {
               <p>Users</p>
               <h3>{users.length}</h3>
             </div>
-
           </Link>
 
 
