@@ -10,6 +10,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CategoryIcon from '@mui/icons-material/Category';
 import PeopleIcon from '@mui/icons-material/People';
+import { Link } from "react-router-dom";
 
 import {
   Chart as ChartJS,
@@ -121,7 +122,9 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="dashboardCard orangeCard">
+
+          <Link to="/admin/orders" className="dashboardCard orangeCard">
+
             <div className="cardIcon">
               <ShoppingCartIcon style={{ fontSize: 40 }} />
             </div>
@@ -129,9 +132,10 @@ const Dashboard = () => {
               <p>SALES</p>
               <h3>{orders.length}</h3>
             </div>
-          </div>
+          </Link>
 
-          <div className="dashboardCard blueCard">
+          <Link to="/admin/products" className="dashboardCard blueCard">
+
             <div className="cardIcon">
               <CategoryIcon style={{ fontSize: 40 }} />
             </div>
@@ -139,9 +143,11 @@ const Dashboard = () => {
               <p>PRODUCTS</p>
               <h3>{products.length}</h3>
             </div>
-          </div>
 
-          <div className="dashboardCard greenCard">
+          </Link>
+
+          <Link to="/admin/users" className="dashboardCard greenCard">
+
             <div className="cardIcon">
               <PeopleIcon style={{ fontSize: 40 }} />
             </div>
@@ -149,7 +155,10 @@ const Dashboard = () => {
               <p>Users</p>
               <h3>{users.length}</h3>
             </div>
-          </div>
+
+          </Link>
+
+
         </div>
 
         <div className="chartArea">
