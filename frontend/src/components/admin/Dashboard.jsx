@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import Sidebar from "./Sidebar";
 import "./Dashboard.css";
 import { Typography } from "@mui/material";
-import { Line, Bar } from "react-chartjs-2";
-import {getAdminProduct} from "../../actions/productAction"
-import {getAllOrders} from "../../actions/orderAction"
-import {getAllUsers} from "../../actions/userAction"
+import { Line, Bar, Doughnut } from "react-chartjs-2";
+import { getAdminProduct } from "../../actions/productAction";
+import { getAllOrders } from "../../actions/orderAction";
+import { getAllUsers } from "../../actions/userAction";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import CategoryIcon from '@mui/icons-material/Category';
+import PeopleIcon from '@mui/icons-material/People';
 
-
-// Import necessary parts from Chart.js
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -19,9 +21,9 @@ import {
   Title,
   Tooltip,
   Legend,
+  ArcElement
 } from "chart.js";
 
-// Register the components you want to use
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -30,16 +32,15 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ArcElement
 );
 
 import { useSelector, useDispatch } from "react-redux";
 
-
 const Dashboard = () => {
   const dispatch = useDispatch();
-  
-  // Safely destructure state and provide fallback empty arrays in case the data is not ready yet
+
   const { products = [] } = useSelector((state) => state.products);
   const { orders = [] } = useSelector((state) => state.allOrders);
   const { users = [] } = useSelector((state) => state.allUsers);
@@ -50,18 +51,34 @@ const Dashboard = () => {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-  // Handle cases where orders or products may be undefined
   const totalRevenue = orders?.reduce((acc, order) => acc + order.totalPrice, 0);
 
+  const inStock = products.filter(product => product.stock > 0).length;
+  const outOfStock = products.filter(product => product.stock === 0).length;
+
+  const dummySales = [50000, 100000, 80000, 70000, 150000, 250000, 342562, 205686, 355368];
+
+  const realMonthlySales = useMemo(() => {
+    const sales = new Array(12).fill(0);
+    orders.forEach(order => {
+      const date = new Date(order.createdAt);
+      const month = date.getMonth();
+      sales[month] += order.totalPrice;
+    });
+    return sales.slice(9);
+  }, [orders]);
+
+  const monthlySales = [...dummySales, ...realMonthlySales];
+
   const lineState = {
-    labels: ["January", "February", "March", "April", "May", "June","July"],
+    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     datasets: [
       {
         label: "Sales Over Time",
         fill: true,
         backgroundColor: "#ADD8E6",
         borderColor: "#0077b6",
-        data: [12000, 19000, 25000, 30000, 42000, 55000,566000],
+        data: monthlySales,
       },
     ],
   };
@@ -72,7 +89,18 @@ const Dashboard = () => {
       {
         label: "Statistics",
         backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-        data: [products.length, orders.length, users.length], // Ensure these arrays exist before accessing .length
+        data: [products.length, orders.length, users.length],
+      },
+    ],
+  };
+
+  const stockState = {
+    labels: ["In Stock", "Out of Stock"],
+    datasets: [
+      {
+        label: "Stock Status",
+        backgroundColor: ["#00A6B4", "#6800B4"],
+        data: [inStock, outOfStock],
       },
     ],
   };
@@ -81,23 +109,46 @@ const Dashboard = () => {
     <div className="dashboard">
       <Sidebar />
       <div className="dashboardContainer">
-        <Typography component="h1">Dashboard</Typography>
+        <div className="name">Dashboard</div>
         <div className="dashboardSummary">
-          <div className="dashboardCard">
-            <p>Total Revenue</p>
-            <h3>₹{totalRevenue?.toLocaleString()}</h3>
+          <div className="dashboardCard redCard">
+            <div className="cardIcon">
+              <AttachMoneyIcon style={{ fontSize: 40 }} />
+            </div>
+            <div className="cardContent">
+              <p>REVENUE</p>
+              <h3>₹{totalRevenue?.toLocaleString()}</h3>
+            </div>
           </div>
-          <div className="dashboardCard">
-            <p>Total Products</p>
-            <h3>{products.length}</h3>
+
+          <div className="dashboardCard orangeCard">
+            <div className="cardIcon">
+              <ShoppingCartIcon style={{ fontSize: 40 }} />
+            </div>
+            <div className="cardContent">
+              <p>SALES</p>
+              <h3>{orders.length}</h3>
+            </div>
           </div>
-          <div className="dashboardCard">
-            <p>Total Orders</p>
-            <h3>{orders.length}</h3>
+
+          <div className="dashboardCard blueCard">
+            <div className="cardIcon">
+              <CategoryIcon style={{ fontSize: 40 }} />
+            </div>
+            <div className="cardContent">
+              <p>PRODUCTS</p>
+              <h3>{products.length}</h3>
+            </div>
           </div>
-          <div className="dashboardCard">
-            <p>Total Users</p>
-            <h3>{users.length}</h3>
+
+          <div className="dashboardCard greenCard">
+            <div className="cardIcon">
+              <PeopleIcon style={{ fontSize: 40 }} />
+            </div>
+            <div className="cardContent">
+              <p>Users</p>
+              <h3>{users.length}</h3>
+            </div>
           </div>
         </div>
 
@@ -109,6 +160,13 @@ const Dashboard = () => {
           <div className="chartCard">
             <Typography component="h2">Overall Statistics</Typography>
             <Bar data={barState} />
+          </div>
+        </div>
+
+        <div className="chartArea">
+          <div className="chartCard">
+            <Typography component="h2">Product Stock Status</Typography>
+            <Doughnut data={stockState} />
           </div>
         </div>
       </div>
