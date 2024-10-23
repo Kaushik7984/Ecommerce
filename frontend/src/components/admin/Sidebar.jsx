@@ -1,26 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Sidebar.css";
+import logo from "../../images/logo.png";
 import { Link } from "react-router-dom";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import PostAddIcon from "@mui/icons-material/PostAdd";
+import AddIcon from "@mui/icons-material/Add";
+import ListAltIcon from "@mui/icons-material/ListAlt";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PeopleIcon from "@mui/icons-material/People";
-import ProductIcon from "@mui/icons-material/Category";
+import RateReviewIcon from "@mui/icons-material/RateReview";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Button } from "@mui/material";
 
 const Sidebar = () => {
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
+
+  const toggleProducts = () => {
+    setIsProductsOpen(!isProductsOpen);
+  };
+
   return (
     <div className="sidebar">
-      <h2>Admin Panel</h2>
-      <Link to="/admin/dashboard">
-        <p><DashboardIcon /> Dashboard</p>
+      <Link to="/">
+        <img src={logo} alt="Ecommerce" />
       </Link>
-      <Link to="/admin/products">
-        <p><ProductIcon /> Products</p>
+      <Link to="/admin/dashboard">
+        <p>
+          <DashboardIcon /> Dashboard
+        </p>
+      </Link>
+      <Link>
+        <p onClick={toggleProducts}>
+          <p>
+            {isProductsOpen ? (
+              <ExpandMoreIcon />
+            ) : (
+              <ExpandMoreIcon style={{ transform: "rotate(180deg)" }} />
+            )}
+          </p>
+          Products
+        </p>
+        {isProductsOpen && (
+          <div className="product">
+            <Link to="/admin/products">
+              <p>
+                <PostAddIcon /> All
+              </p>
+            </Link>
+            <Link to="/admin/product">
+              <p>
+                <AddIcon /> Create
+              </p>
+            </Link>
+          </div>
+        )}
       </Link>
       <Link to="/admin/orders">
-        <p><ShoppingCartIcon /> Orders</p>
+        <p>
+          <ListAltIcon />
+          Orders
+        </p>
       </Link>
       <Link to="/admin/users">
-        <p><PeopleIcon /> Users</p>
+        <p>
+          <PeopleIcon /> Users
+        </p>
+      </Link>
+      <Link to="/admin/reviews">
+        <p>
+          <RateReviewIcon />
+          Reviews
+        </p>
       </Link>
     </div>
   );
