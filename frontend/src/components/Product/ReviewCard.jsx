@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import profilePng from "../../images/Profile.png";
-import { Rating } from "@material-ui/lab";
 import './ReviewCard.css';
+import Rating from '@mui/material/Rating';
 
 const ReviewCard = ({ review }) => {
   const [isExpanded, setIsExpanded] = useState(false);

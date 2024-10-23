@@ -2,7 +2,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./ForgotPassword.css";
 import Loader from "../layout/Loader/Loader";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userAction";
 import {toast as alert} from "react-hot-toast";

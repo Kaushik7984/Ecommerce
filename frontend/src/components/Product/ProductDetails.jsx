@@ -8,17 +8,10 @@ import Loader from "../layout/Loader/Loader";
 import MetaData from "../layout/MetaData.jsx";
 import ToastContainer from "../Home/ToastContainer.jsx";
 import toast from "react-hot-toast";
-import { Rating } from "@material-ui/lab";
 import { useParams } from "react-router-dom";  
 import { addItemsToCart } from "../../actions/cartAction.js"; 
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Button,
-} from "@material-ui/core";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants.js";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Rating } from "@mui/material";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -188,18 +181,23 @@ const ProductDetails = () => {
             </DialogActions>
           </Dialog>
 
-          {product.reviews && product.reviews[0] ? (
-            <div className="reviews">
-              {product.reviews.slice(0, showAllReviews ? product.reviews.length : 2).map((review) => (
-                <ReviewCard key={review._id} review={review} />
-              ))}
-              <span className="viewMore" onClick={toggleReviews}>
-                {showAllReviews ? "View Less" : "View More"}
-              </span>
-            </div>
-          ) : (
-            <p className="noReviews">No Reviews Yet</p>
-          )}
+          {product.reviews && product.reviews.length > 0 ? (
+  <div className="reviews">
+    {product.reviews
+      .slice(0, showAllReviews ? product.reviews.length : 4)
+      .map((review) => (
+        <ReviewCard key={review._id} review={review} />
+      ))}
+    {product.reviews.length > 4 && (
+      <span className="viewMore" onClick={toggleReviews}>
+        {showAllReviews ? "View Less" : "View More"}
+      </span>
+    )}
+  </div>
+) : (
+  <p className="noReviews">No Reviews Yet</p>
+)}
+
         </Fragment>
       )}
     </Fragment>

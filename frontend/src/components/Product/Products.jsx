@@ -7,8 +7,8 @@ import ProductCard from '../Home/ProductCard';
 import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 import Pagination from "react-js-pagination"
-import Slider from "@material-ui/core/Slider";
-import Typography from "@material-ui/core/Typography";
+import Slider from "@mui/material/Slider";
+import Typography from "@mui/material/Typography";
 import MetaData from "../layout/MetaData.jsx";
 
 

@@ -1,21 +1,20 @@
 import React, { Fragment, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import "./ProductList.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import {toast as alert} from "react-hot-toast";
-import { Button } from "@material-ui/core";
+import { toast as alert } from "react-hot-toast";
+import { Button } from "@mui/material";
 import MetaData from "../layout/MetaData";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Sidebar from "./Sidebar";
 import { DELETE_USER_RESET } from "../../constants/userConstants";
 import { clearErrors, deleteUser, getAllUsers } from "../../actions/userAction";
 
 const UsersList = () => {
   const dispatch = useDispatch();
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const { error, users } = useSelector((state) => state.allUsers);
 
@@ -47,7 +46,7 @@ const UsersList = () => {
     }
 
     dispatch(getAllUsers());
-  }, [dispatch, alert, error, deleteError,isDeleted, message]);
+  }, [dispatch, alert, error, deleteError, isDeleted, message]);
 
   const columns = [
     { field: "id", headerName: "User ID", minWidth: 180, flex: 0.8 },
@@ -68,13 +67,10 @@ const UsersList = () => {
     {
       field: "role",
       headerName: "Role",
-      type: "number",
       minWidth: 150,
       flex: 0.3,
       cellClassName: (params) => {
-        return params.getValue(params.id, "role") === "admin"
-          ? "greenColor"
-          : "redColor";
+        return params.row.role === "admin" ? "greenColor" : "redColor";
       },
     },
 
@@ -83,20 +79,17 @@ const UsersList = () => {
       flex: 0.3,
       headerName: "Actions",
       minWidth: 150,
-      type: "number",
       sortable: false,
       renderCell: (params) => {
         return (
           <Fragment>
-            <Link to={`/admin/user/${params.getValue(params.id, "id")}`}>
-              <Button><EditIcon /></Button>
+            <Link to={`/admin/user/${params.row.id}`}>
+              <Button>
+                <EditIcon />
+              </Button>
             </Link>
 
-            <Button
-              onClick={() =>
-                deleteUserHandler(params.getValue(params.id, "id"))
-              }
-            >
+            <Button onClick={() => deleteUserHandler(params.row.id)}>
               <DeleteIcon />
             </Button>
           </Fragment>
@@ -116,8 +109,6 @@ const UsersList = () => {
         name: item.name,
       });
     });
-    
-
 
   return (
     <Fragment>

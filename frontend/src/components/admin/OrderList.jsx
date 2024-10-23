@@ -1,14 +1,13 @@
-
 import React, { Fragment, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import "./ProductList.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import {toast as alert} from "react-hot-toast";
-import { Button } from "@material-ui/core";
+import { toast as alert } from "react-hot-toast";
+import { Button } from "@mui/material";
 import MetaData from "../layout/MetaData";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Sidebar from "./Sidebar";
 import {
   deleteOrder,
@@ -17,13 +16,11 @@ import {
 } from "../../actions/orderAction";
 import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 
-const OrderList = ({ history }) => {
+const OrderList = () => {
   const dispatch = useDispatch();
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const { error, orders } = useSelector((state) => state.allOrders);
-
   const { error: deleteError, isDeleted } = useSelector((state) => state.order);
 
   const deleteOrderHandler = (id) => {
@@ -48,18 +45,17 @@ const OrderList = ({ history }) => {
     }
 
     dispatch(getAllOrders());
-  }, [dispatch, alert, error, deleteError, history, isDeleted]);
+  }, [dispatch, alert, error, deleteError, navigate, isDeleted]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
-
     {
       field: "status",
       headerName: "Status",
       minWidth: 150,
       flex: 0.5,
       cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
+        return params.row.status === "Delivered"
           ? "greenColor"
           : "redColor";
       },
@@ -71,7 +67,6 @@ const OrderList = ({ history }) => {
       minWidth: 150,
       flex: 0.4,
     },
-
     {
       field: "amount",
       headerName: "Amount",
@@ -79,25 +74,20 @@ const OrderList = ({ history }) => {
       minWidth: 270,
       flex: 0.5,
     },
-
     {
       field: "actions",
       flex: 0.3,
       headerName: "Actions",
       minWidth: 150,
-      type: "number",
       sortable: false,
       renderCell: (params) => {
         return (
           <Fragment>
-            <Link to={`/admin/order/${params.getValue(params.id, "id")}`}>
+            <Link to={`/admin/order/${params.row.id}`}>
               <Button><EditIcon /></Button>
             </Link>
-
             <Button
-              onClick={() =>
-                deleteOrderHandler(params.getValue(params.id, "id"))
-              }
+              onClick={() => deleteOrderHandler(params.row.id)}
             >
               <DeleteIcon />
             </Button>
@@ -122,12 +112,10 @@ const OrderList = ({ history }) => {
   return (
     <Fragment>
       <MetaData title={`All Orders - Admin`} />
-
       <div className="dashboard">
-        <Sidebar /> 
+        <Sidebar />
         <div className="productListContainer">
           <h1 id="productListHeading">All Orders</h1>
-
           <DataGrid
             rows={rows}
             columns={columns}

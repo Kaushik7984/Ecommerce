@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { Link } from "react-router-dom";
-import { Search, ShoppingCart, Person } from "@material-ui/icons";
+import { Search, ShoppingCart, Person } from "@mui/icons-material";
 import "./ReactNavbar.css";
 import logo from "../../../images/logo.png";
 

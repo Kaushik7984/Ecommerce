@@ -105,10 +105,13 @@
   @media screen and (max-width: 600px) {
     .newProductContainer {
       background-color: rgb(255, 255, 255);
+      padding: 5vmax;
+      overflow: hidden;
 
     }
     .createProductForm {
-      padding: 5vmax;
+      /* padding: 5vmax; */
+      width: 30vh;
     }
   
     .createProductForm > div > input,

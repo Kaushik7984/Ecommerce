@@ -1,29 +1,26 @@
-import React, { Fragment, useEffect } from 'react'
-import "./ProductList.css"
-import Sidebar from './Sidebar'
-import { useDispatch, useSelector } from 'react-redux'
-import MetaData from '../layout/MetaData'
-import { DataGrid } from '@material-ui/data-grid'
-import toast from 'react-hot-toast'
-import { clearErrors, deleteProduct, getAdminProduct } from '../../actions/productAction'
-import { Link, useNavigate } from 'react-router-dom'
-import { Button } from '@material-ui/core'
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
-import { DELETE_PRODUCT_RESET } from '../../constants/productConstants'
+import React, { Fragment, useEffect } from 'react';
+import "./ProductList.css";
+import Sidebar from './Sidebar';
+import { useDispatch, useSelector } from 'react-redux';
+import MetaData from '../layout/MetaData';
+import { DataGrid } from '@mui/x-data-grid';
+import toast from 'react-hot-toast';
+import { clearErrors, deleteProduct, getAdminProduct } from '../../actions/productAction';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { DELETE_PRODUCT_RESET } from '../../constants/productConstants';
 
 const ProductList = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { loading, error, products } = useSelector((state) => state.products);
-
-  const { error: deleteError, isDeleted } = useSelector(
-    (state) => state.product
-  )
+  const { error: deleteError, isDeleted } = useSelector((state) => state.product);
 
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id));  
-  }
+  };
 
   useEffect(() => {
     if (error) {
@@ -35,17 +32,16 @@ const ProductList = () => {
       dispatch(clearErrors());
     }
     if (isDeleted) {
-      toast.success("Product Delete Successfully")
-      navigate("/admin/dashboard")
-      dispatch({ type: DELETE_PRODUCT_RESET })
+      toast.success("Product Deleted Successfully");
+      navigate("/admin/dashboard");
+      dispatch({ type: DELETE_PRODUCT_RESET });
     }
 
     dispatch(getAdminProduct());
-  }, [dispatch,toast,navigate,deleteError,isDeleted]);
+  }, [dispatch, toast, navigate, deleteError, isDeleted]);
 
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
-
     {
       field: "name",
       headerName: "Name",
@@ -59,7 +55,6 @@ const ProductList = () => {
       minWidth: 150,
       flex: 0.3,
     },
-
     {
       field: "price",
       headerName: "Price",
@@ -67,26 +62,21 @@ const ProductList = () => {
       minWidth: 270,
       flex: 0.5,
     },
-
     {
       field: "actions",
       flex: 0.3,
       headerName: "Actions",
       minWidth: 150,
-      type: "number",
       sortable: false,
       renderCell: (params) => {
         return (
           <Fragment>
-            <Link to={`/admin/product/${params.getValue(params.id, "id")}`}>
-              <Button>  <EditIcon /> </Button>
+            <Link to={`/admin/product/${params.row.id}`}>
+              <Button>
+                <EditIcon />
+              </Button>
             </Link>
-
-            <Button
-              onClick={() =>
-                deleteProductHandler(params.getValue(params.id, "id"))
-              }
-            >
+            <Button onClick={() => deleteProductHandler(params.row.id)}>
               <DeleteIcon />
             </Button>
           </Fragment>
@@ -95,26 +85,20 @@ const ProductList = () => {
     },
   ];
 
-  const rows = [];
-
-  products && products.forEach((item) => {
-    rows.push({
-      id: item._id,
-      stock: item.stock,
-      price: item.price,
-      name: item.name,
-    });
-  });
+  const rows = products ? products.map(item => ({
+    id: item._id,
+    stock: item.stock,
+    price: item.price,
+    name: item.name,
+  })) : [];
 
   return (
     <Fragment>
       <MetaData title={`All Products - Admin`} />
-
       <div className="dashboard">
         <Sidebar />
         <div className="productListContainer">
           <h1 id="productListHeading">All Products</h1>
-
           <DataGrid
             rows={rows}
             columns={columns}
@@ -126,7 +110,7 @@ const ProductList = () => {
         </div>
       </div>
     </Fragment>
-  )
-}
+  );
+};
 
-export default ProductList
+export default ProductList;

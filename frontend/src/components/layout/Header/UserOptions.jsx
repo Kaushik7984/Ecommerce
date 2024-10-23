@@ -1,17 +1,17 @@
 
 import React, { Fragment, useState } from "react";
 import "./Header.css";
-import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
-import Backdrop from "@material-ui/core/Backdrop";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import PersonIcon from "@material-ui/icons/Person";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import ListAltIcon from "@material-ui/icons/ListAlt";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import Backdrop from "@mui/material/Backdrop";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import PersonIcon from "@mui/icons-material/Person";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../../actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
+import { SpeedDial, SpeedDialAction } from "@mui/material";
 
 
 const UserOptions = ({ user }) => {

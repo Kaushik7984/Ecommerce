@@ -1,9 +1,9 @@
 import React from "react";
 import "./About.css";
-import { Button, Typography, Avatar } from "@material-ui/core";
-import YouTubeIcon from "@material-ui/icons/YouTube";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import { Facebook, GitHub, LinkedIn, Twitter } from "@material-ui/icons";
+import { Button, Typography, Avatar } from "@mui/material";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import { Facebook, GitHub, LinkedIn, Twitter } from "@mui/icons-material";
 import MetaData from "../MetaData";
 const About = () => {
     const visitInstagram = () => {
