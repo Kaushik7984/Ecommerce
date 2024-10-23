@@ -13,11 +13,11 @@ This is a fully functional Ecommerce website built using React, Redux, and Node.
 
 ## Tech Stack
 
-- **Frontend**: React, Redux, React Router, SCSS
+- **Frontend**: React, Redux, React Router, CSS
 - **Backend**: Node.js, Express, MongoDB
-- **Payment Integration**: [Payment Gateway Name]
+- **Payment Integration**: Stripe
 - **State Management**: Redux for state management, with local storage for persisting cart items
-- **Deployment**: [Deployment Platform]
+- **Deployment**: -
 
 ## Dependencies
 
@@ -29,7 +29,6 @@ This is a fully functional Ecommerce website built using React, Redux, and Node.
 - `react-redux` - Integration of Redux with React.
 - `redux-thunk` - Middleware for Redux to handle asynchronous actions.
 - `axios` - Promise-based HTTP client for API requests.
-- `scss` or `sass` - CSS pre-processor for styling.
 - `react-icons` - Icon library for React components.
 - `material-ui` - styled feature like button,box,icon,etc.. for React components.
 
