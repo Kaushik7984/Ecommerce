@@ -1,52 +1,48 @@
- import React, { useEffect } from "react";
-import Sidebar from "./Sidebar.jsx";
+import React, { useEffect } from "react";
+import Sidebar from "./Sidebar";
 import "./Dashboard.css";
 import { Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import { Doughnut, Line } from "react-chartjs-2";
-import { useSelector, useDispatch } from "react-redux";
-import { getAdminProduct } from "../../actions/productAction.js";
-import MetaData from "../layout/MetaData.jsx";
+import { Line, Bar } from "react-chartjs-2";
+import {getAdminProduct} from "../../actions/productAction"
+import {getAllOrders} from "../../actions/orderAction"
+import {getAllUsers} from "../../actions/userAction"
+
+
+// Import necessary parts from Chart.js
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
-  ArcElement,
+  BarElement,
+  Title,
   Tooltip,
   Legend,
 } from "chart.js";
-import { getAllOrders } from "../../actions/orderAction.js";
-import { getAllUsers } from "../../actions/userAction.js";
 
+// Register the components you want to use
 ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
-  ArcElement,
+  BarElement,
+  Title,
   Tooltip,
   Legend
 );
 
+import { useSelector, useDispatch } from "react-redux";
+
+
 const Dashboard = () => {
   const dispatch = useDispatch();
-
-  const { products } = useSelector((state) => state.products);
-
-  const { orders } = useSelector((state) => state.allOrders);
-
-  const { users } = useSelector((state) => state.allUsers);
-
-  let outOfStock = 0;
-
-  products &&
-    products.forEach((item) => {
-      if (item.stock === 0) {
-        outOfStock += 1;
-      }
-    });
+  
+  // Safely destructure state and provide fallback empty arrays in case the data is not ready yet
+  const { products = [] } = useSelector((state) => state.products);
+  const { orders = [] } = useSelector((state) => state.allOrders);
+  const { users = [] } = useSelector((state) => state.allUsers);
 
   useEffect(() => {
     dispatch(getAdminProduct());
@@ -54,73 +50,68 @@ const Dashboard = () => {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-  let totalAmount = 0;
-  orders &&
-    orders.forEach((item) => {
-      totalAmount += item.totalPrice;
-    });
+  // Handle cases where orders or products may be undefined
+  const totalRevenue = orders?.reduce((acc, order) => acc + order.totalPrice, 0);
 
   const lineState = {
-    labels: ["Initial Amount", "Amount Earned"],
+    labels: ["January", "February", "March", "April", "May", "June","July"],
     datasets: [
       {
-        label: "TOTAL AMOUNT",
-        backgroundColor: ["tomato"],
-        hoverBackgroundColor: ["rgb(197, 72, 49)"],
-        data: [0, totalAmount],
+        label: "Sales Over Time",
+        fill: true,
+        backgroundColor: "#ADD8E6",
+        borderColor: "#0077b6",
+        data: [12000, 19000, 25000, 30000, 42000, 55000,566000],
       },
     ],
   };
 
-  const doughnutState = {
-    labels: ["Out of Stock", "InStock"],
+  const barState = {
+    labels: ["Products", "Orders", "Users"],
     datasets: [
       {
-        backgroundColor: ["#00A6B4", "#6800B4"],
-        hoverBackgroundColor: ["#4B5000", "#35014F"],
-        data: [outOfStock,products.length - outOfStock],
+        label: "Statistics",
+        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+        data: [products.length, orders.length, users.length], // Ensure these arrays exist before accessing .length
       },
     ],
-    
   };
+
   return (
     <div className="dashboard">
-      <MetaData title="Dashboard - Admin Panel" />
       <Sidebar />
       <div className="dashboardContainer">
         <Typography component="h1">Dashboard</Typography>
-
         <div className="dashboardSummary">
-          <div>
-            <p>
-              Total Amount <br /> ₹{totalAmount}
-            </p>
+          <div className="dashboardCard">
+            <p>Total Revenue</p>
+            <h3>₹{totalRevenue?.toLocaleString()}</h3>
           </div>
-          <div className="dashboardSummaryBox2">
-            <Link to="/admin/products">
-              <p>Product</p>
-              <p>{products && products.length}</p>
-            </Link>
-            <Link to="/admin/orders">
-              <p>Orders</p>
-              <p>{orders && orders.length}</p>
-            </Link>
-            <Link to="/admin/users">
-              <p>Users</p>
-              <p>{users && users.length}</p>
-            </Link>
+          <div className="dashboardCard">
+            <p>Total Products</p>
+            <h3>{products.length}</h3>
+          </div>
+          <div className="dashboardCard">
+            <p>Total Orders</p>
+            <h3>{orders.length}</h3>
+          </div>
+          <div className="dashboardCard">
+            <p>Total Users</p>
+            <h3>{users.length}</h3>
           </div>
         </div>
 
-        <div className="lineChart">
-          <Line data={lineState} />
-        </div>
-
-        <div className="doughnutChart">
-          <Doughnut data={doughnutState} />
+        <div className="chartArea">
+          <div className="chartCard">
+            <Typography component="h2">Sales Trend</Typography>
+            <Line data={lineState} />
+          </div>
+          <div className="chartCard">
+            <Typography component="h2">Overall Statistics</Typography>
+            <Bar data={barState} />
+          </div>
         </div>
       </div>
-
     </div>
   );
 };
