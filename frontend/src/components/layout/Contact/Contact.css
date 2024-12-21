@@ -95,6 +95,16 @@ h2 {
     margin: 1rem;
 }
 
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: -12px;
+  }
+  .formGroup {
+    margin-bottom: 15px;
+  }
+  
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .contactContent {
