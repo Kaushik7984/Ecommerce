@@ -29,7 +29,7 @@ const Footer = () => {
         <a href="https://github.com/Kaushik7984" target="_blank" rel="noopener noreferrer">
           <GitHub /> GitHub
         </a>
-        <a href="http://instagram.com/kaushiiq_7x" target="_blank" rel="noopener noreferrer">
+        <a href="http://instagram.com/kaushiiq_7" target="_blank" rel="noopener noreferrer">
           <Instagram /> Instagram
         </a>
       </div>

@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   // console.log(product)
+  // if (!product?.images?.[0]?.url) {
+  //   console.error("Missing or invalid image for product:", product);
+  // }
+  
   return (
     <div>
       <Link className='productCard' to={`/product/${product._id}`}>

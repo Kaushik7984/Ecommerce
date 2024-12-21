@@ -70,7 +70,7 @@ const UpdateProduct = ({ history, match }) => {
         if (updateError) {
             alert.error(updateError);
             dispatch(clearErrors());
-            console.log(updateError)
+            // console.log(updateError)
         }
 
         if (isUpdated) {

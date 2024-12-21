@@ -7,7 +7,7 @@ import { Facebook, GitHub, LinkedIn, Twitter } from "@mui/icons-material";
 import MetaData from "../MetaData";
 const About = () => {
     const visitInstagram = () => {
-        window.location = "http://instagram.com/kaushiiq_7x";
+        window.location = "http://instagram.com/kaushiiq_7";
     };
     return (
         <div className="aboutSection">
@@ -42,7 +42,7 @@ const About = () => {
                             <LinkedIn className="SvgIcon" />
                         </a>
 
-                        <a href="http://instagram.com/kaushiiq_7x" target="blank">
+                        <a href="http://instagram.com/kaushiiq_7" target="blank">
                             <InstagramIcon className="instagramSvgIcon" />
                         </a>
 
