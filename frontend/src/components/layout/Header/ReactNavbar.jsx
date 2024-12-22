@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import { useState,    } from "react";
 import { Link } from "react-router-dom";
 import { Search, ShoppingCart, Person } from "@mui/icons-material";
 import "./ReactNavbar.css";
@@ -16,7 +16,7 @@ const ReactNavbar = () => {
   };
 
   return (
-    <Fragment>
+   <>
       {menuToggle && <div className="overlay" onClick={closeBarOnClick}></div>}
 
       <div className="menuBurger" onClick={menuToggleHandler}>
@@ -45,7 +45,7 @@ const ReactNavbar = () => {
           </div>
         </div>
       </nav>
-    </Fragment>
+    </>
   );
 };
 

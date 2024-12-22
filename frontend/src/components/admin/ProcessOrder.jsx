@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import MetaData from "../layout/MetaData";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Typography } from "@mui/material";
 import Sidebar from "./Sidebar";
 import {
@@ -10,7 +10,7 @@ import {
 } from "../../actions/orderAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
-import {toast as alert} from "react-hot-toast";
+import { toast as alert } from "react-hot-toast";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import { Button } from "@mui/material";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
@@ -20,7 +20,7 @@ const ProcessOrder = () => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
 
-  const{id} = useParams()
+  const { id } = useParams()
 
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
@@ -51,10 +51,10 @@ const ProcessOrder = () => {
     }
 
     dispatch(getOrderDetails(id));
-  }, [dispatch, alert, error,id, isUpdated, updateError]);
+  }, [dispatch, error, id, isUpdated, updateError]);
 
   return (
-    <Fragment>
+    <>
       <MetaData title="Process Order" />
       <div className="dashboard">
         <Sidebar />
@@ -97,13 +97,13 @@ const ProcessOrder = () => {
                       <p
                         className={
                           order.paymentInfo &&
-                          order.paymentInfo.status === "succeeded"
+                            order.paymentInfo.status === "succeeded"
                             ? "greenColor"
                             : "redColor"
                         }
                       >
                         {order.paymentInfo &&
-                        order.paymentInfo.status === "succeeded"
+                          order.paymentInfo.status === "succeeded"
                           ? "PAID"
                           : "NOT PAID"}
                       </p>
@@ -149,8 +149,8 @@ const ProcessOrder = () => {
                   </div>
                 </div>
               </div>
-           
-        
+
+
               <div
                 style={{
                   display: order.orderStatus === "Delivered" ? "none" : "block",
@@ -191,7 +191,7 @@ const ProcessOrder = () => {
           )}
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import { useEffect } from 'react';
 import "./ProductList.css";
 import Sidebar from './Sidebar';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,11 +15,11 @@ import { DELETE_PRODUCT_RESET } from '../../constants/productConstants';
 const ProductList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, products } = useSelector((state) => state.products);
+  const { error, products } = useSelector((state) => state.products);
   const { error: deleteError, isDeleted } = useSelector((state) => state.product);
 
   const deleteProductHandler = (id) => {
-    dispatch(deleteProduct(id));  
+    dispatch(deleteProduct(id));
   };
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const ProductList = () => {
     }
 
     dispatch(getAdminProduct());
-  }, [dispatch, toast, navigate, deleteError, isDeleted]);
+  }, [dispatch, navigate, deleteError, isDeleted, error]);
 
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
@@ -70,7 +70,7 @@ const ProductList = () => {
       sortable: false,
       renderCell: (params) => {
         return (
-          <Fragment>
+          <>
             <Link to={`/admin/product/${params.row.id}`}>
               <Button>
                 <EditIcon />
@@ -79,7 +79,7 @@ const ProductList = () => {
             <Button onClick={() => deleteProductHandler(params.row.id)}>
               <DeleteIcon />
             </Button>
-          </Fragment>
+          </>
         );
       },
     },
@@ -93,7 +93,7 @@ const ProductList = () => {
   })) : [];
 
   return (
-    <Fragment>
+    <>
       <MetaData title={`All Products - Admin`} />
       <div className="dashboard">
         <Sidebar />
@@ -109,7 +109,7 @@ const ProductList = () => {
           />
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

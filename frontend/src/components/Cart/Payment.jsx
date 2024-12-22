@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import {   useEffect, useRef } from "react";
 import CheckoutSteps from "../Cart/CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
@@ -119,7 +119,7 @@ const Payment = () => {
 
 
   return (
-    <Fragment>
+   <>
       <MetaData title="Payment" />
       <CheckoutSteps activeStep={2} />
       <div className="paymentContainer">
@@ -146,7 +146,7 @@ const Payment = () => {
           />
         </form>
       </div>
-    </Fragment>
+    </>
   );
 };
 

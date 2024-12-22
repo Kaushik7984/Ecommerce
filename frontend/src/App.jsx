@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -44,7 +44,7 @@ import Contact from "./components/layout/Contact/Contact.jsx";
 import NotFound from "./components/layout/Not Found/NotFound.jsx";
 
 function App() {
-  const { isAuthenticated, user, loading } = useSelector((state) => state.user);
+  const { isAuthenticated, user } = useSelector((state) => state.user);
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   async function getStripeApiKey() {
@@ -92,7 +92,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
 
-{/* Protected Routes */}
+        {/* Protected Routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="/account" element={<Profile />} />
           <Route path="/me/update" element={<UpdateProfile />} />
@@ -114,7 +114,7 @@ function App() {
           <Route path="/order/:id" element={<OrderDetails />} />
         </Route>
 
-{/* Admin Protected Route */}
+        {/* Admin Protected Route */}
         <Route element={<ProtectedRoute isAdmin={true} />}>
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/products" element={<ProductList />} />

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import "./ProductList.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -46,7 +46,7 @@ const UsersList = () => {
     }
 
     dispatch(getAllUsers());
-  }, [dispatch, alert, error, deleteError, isDeleted, message]);
+  }, [dispatch, error, deleteError, isDeleted, message, navigate]);
 
   const columns = [
     { field: "id", headerName: "User ID", minWidth: 180, flex: 0.8 },
@@ -82,7 +82,7 @@ const UsersList = () => {
       sortable: false,
       renderCell: (params) => {
         return (
-          <Fragment>
+          <>
             <Link to={`/admin/user/${params.row.id}`}>
               <Button>
                 <EditIcon />
@@ -92,7 +92,7 @@ const UsersList = () => {
             <Button onClick={() => deleteUserHandler(params.row.id)}>
               <DeleteIcon />
             </Button>
-          </Fragment>
+          </>
         );
       },
     },
@@ -111,7 +111,7 @@ const UsersList = () => {
     });
 
   return (
-    <Fragment>
+    <>
       <MetaData title={`All Users - Admin`} />
 
       <div className="dashboard">
@@ -129,7 +129,7 @@ const UsersList = () => {
           />
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

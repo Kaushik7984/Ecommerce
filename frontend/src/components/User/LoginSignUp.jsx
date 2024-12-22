@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState, useEffect } from "react";
+import {   useRef, useState, useEffect } from "react";
 import "./LoginSignUp.css";
 import Loader from "../layout/Loader/Loader";
 import { Link, useNavigate } from "react-router-dom";
@@ -80,7 +80,7 @@ const LoginSignUp = () => {
         if(isAuthenticated){
             navigate(redirect);  
         }
-    }, [dispatch, error,isAuthenticated, redirect])
+    }, [dispatch, error,isAuthenticated, redirect,navigate])
 
     const switchTabs = (e, tab) => {
         if (tab === "login") {
@@ -100,10 +100,10 @@ const LoginSignUp = () => {
     };
 
     return (
-        <Fragment>
+       <>
             {loading ? (<Loader />
             ) : (
-                <Fragment>
+               <>
                     <div className="LoginSignUpContainer">
                         <div className="LoginSignUpBox">
                             <div>
@@ -190,8 +190,8 @@ const LoginSignUp = () => {
                             </form>
                         </div>
                     </div>
-                </Fragment>)}
-        </Fragment>
+                </>)}
+        </>
     );
 };
 

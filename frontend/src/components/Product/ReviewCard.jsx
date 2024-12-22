@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import profilePng from "../../images/Profile.png";
 import './ReviewCard.css';
 import Rating from '@mui/material/Rating';

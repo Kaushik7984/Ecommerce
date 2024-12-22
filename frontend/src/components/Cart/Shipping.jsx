@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import {   useState } from "react";
 import "./Shipping.css";
 import { useSelector, useDispatch } from "react-redux";
 import { saveShippingInfo } from "../../actions/cartAction";
@@ -41,7 +41,7 @@ const Shipping = ( ) => {
   };
 
   return (
-    <Fragment>
+   <>
       <MetaData title="Shipping Details" />
 
       <CheckoutSteps activeStep={0} />
@@ -147,7 +147,7 @@ const Shipping = ( ) => {
           </form>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 
-import React, { Fragment, useState, useEffect } from "react";
+import {   useState, useEffect } from "react";
 import "./ForgotPassword.css";
 import Loader from "../layout/Loader/Loader";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -39,11 +39,11 @@ const ForgotPassword = () => {
   }, [dispatch, error, message]);
 
   return (
-    <Fragment>
+   <>
       {loading ? (
         <Loader />
       ) : (
-        <Fragment>
+       <>
           <MetaData title="Forgot Password" />
           <div className="forgotPasswordContainer">
             <div className="forgotPasswordBox">
@@ -73,9 +73,9 @@ const ForgotPassword = () => {
               </form>
             </div>
           </div>
-        </Fragment>
+        </>
       )}
-    </Fragment>
+    </>
   );
 };
 

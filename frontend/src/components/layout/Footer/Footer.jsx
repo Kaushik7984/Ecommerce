@@ -1,4 +1,4 @@
-import React from "react";
+  
 import playStore from "../../../images/playstore.png";
 import appStore from "../../../images/Appstore.png";
 import { LinkedIn, GitHub, Instagram } from "@mui/icons-material"; // Import icons from Material-UI

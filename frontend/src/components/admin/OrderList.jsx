@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import {   useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import "./ProductList.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -45,7 +45,7 @@ const OrderList = () => {
     }
 
     dispatch(getAllOrders());
-  }, [dispatch, alert, error, deleteError, navigate, isDeleted]);
+  }, [dispatch, error, deleteError, navigate, isDeleted]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
@@ -82,7 +82,7 @@ const OrderList = () => {
       sortable: false,
       renderCell: (params) => {
         return (
-          <Fragment>
+         <>
             <Link to={`/admin/order/${params.row.id}`}>
               <Button><EditIcon /></Button>
             </Link>
@@ -91,7 +91,7 @@ const OrderList = () => {
             >
               <DeleteIcon />
             </Button>
-          </Fragment>
+          </>
         );
       },
     },
@@ -110,7 +110,7 @@ const OrderList = () => {
     });
 
   return (
-    <Fragment>
+   <>
       <MetaData title={`All Orders - Admin`} />
       <div className="dashboard">
         <Sidebar />
@@ -126,7 +126,7 @@ const OrderList = () => {
           />
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

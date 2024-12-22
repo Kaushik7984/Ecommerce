@@ -13,11 +13,9 @@ import {
   UPDATE_ORDER_REQUEST,
   UPDATE_ORDER_SUCCESS,
   UPDATE_ORDER_FAIL,
-  UPDATE_ORDER_RESET,
   DELETE_ORDER_REQUEST,
   DELETE_ORDER_SUCCESS,
   DELETE_ORDER_FAIL,
-  DELETE_ORDER_RESET,
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_SUCCESS,
   ORDER_DETAILS_FAIL,
@@ -95,7 +93,7 @@ export const updateOrder = (id, order) => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
       },
-      withCredentials: "true"
+      withCredentials: "true",
     };
     const { data } = await axios.put(
       `${backend_url}/api/v1/admin/order/${id}`,

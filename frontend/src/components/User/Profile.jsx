@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import {   useEffect } from "react";
 import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
 import Loader from "../layout/Loader/Loader";
@@ -19,11 +19,11 @@ const Profile = () => {
   const formattedDate = user ? new Date(user.createdAt).toLocaleDateString('en-GB') : "";
 
   return (
-    <Fragment>
+   <>
       {loading ? (
         <Loader />
       ) : (
-        <Fragment>
+       <>
           {user && (
             <MetaData title={`${user.name}'s Profile`} />
           )}
@@ -57,9 +57,9 @@ const Profile = () => {
               </div>
             </div>
           </div>
-        </Fragment>
+        </>
       )}
-    </Fragment>
+    </>
   );
 };
 

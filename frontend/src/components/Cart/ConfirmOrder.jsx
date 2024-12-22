@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import {    } from "react";
 import CheckoutSteps from "../Cart/CheckoutSteps";
 import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
@@ -38,7 +38,7 @@ const ConfirmOrder = () => {
     };
 
     return (
-        <Fragment>
+       <>
             <MetaData title="Confirm Order" />
             <CheckoutSteps activeStep={1} />
             <div className="confirmOrderPage">
@@ -111,7 +111,7 @@ const ConfirmOrder = () => {
                     </div>
                 </div>
             </div>
-        </Fragment>
+        </>
     );
 };
 

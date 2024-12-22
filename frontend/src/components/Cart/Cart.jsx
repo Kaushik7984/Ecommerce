@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import {    } from "react";
 import "./Cart.css";
 import CartItemCard from "./CartItemCard.jsx";
 import { useSelector, useDispatch } from "react-redux";
@@ -39,7 +39,7 @@ const Cart = () => {
 
   return (
 
-    <Fragment>
+   <>
             <MetaData title={`Cart`} />
 
       {(cartItems?.length ?? 0) === 0 ? (
@@ -50,7 +50,7 @@ const Cart = () => {
           <Link to="/products">View Products</Link>
         </div>
       ) : (
-        <Fragment>
+       <>
           <div className="cartPage">
             <div className="cartHeader">
               <p>Product</p>
@@ -88,8 +88,8 @@ const Cart = () => {
 
 
           </div>
-        </Fragment>)}
-    </Fragment>
+        </>)}
+    </>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Sidebar.css";
 import logo from "../../images/logo.png";
 import { Link } from "react-router-dom";
@@ -9,8 +9,6 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import RateReviewIcon from "@mui/icons-material/RateReview";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Button } from "@mui/material";
 
 const Sidebar = () => {
   const [isProductsOpen, setIsProductsOpen] = useState(false);

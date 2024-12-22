@@ -1,4 +1,3 @@
-import React, { Fragment } from "react";
 import { Typography, Stepper, StepLabel, Step } from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
@@ -26,7 +25,7 @@ const CheckoutSteps = ({ activeStep }) => {
   };
 
   return (
-    <Fragment>
+    <>
       <Stepper alternativeLabel activeStep={activeStep} style={stepStyles}>
         {steps.map((item, index) => (
           <Step
@@ -45,7 +44,7 @@ const CheckoutSteps = ({ activeStep }) => {
           </Step>
         ))}
       </Stepper>
-    </Fragment>
+    </>
   );
 };
 

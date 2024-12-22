@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import "./MyOrders.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, myOrders } from "../../actions/orderAction";
@@ -79,7 +79,7 @@ const MyOrders = () => {
   }, [dispatch, error]);
 
   return (
-    <Fragment>
+    <>
       <MetaData title={`${user.name} - Orders`} />
       {loading ? (
         <Loader />
@@ -93,10 +93,10 @@ const MyOrders = () => {
             className="myOrdersTable"
             autoHeight
           />
-          <Typography id="myOrdersHeading">{user.name}'s Orders</Typography>
+          <Typography id="myOrdersHeading">{user.name}&apos;s Orders</Typography>
         </div>
       )}
-    </Fragment>
+    </>
   );
 };
 

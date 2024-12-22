@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {toast as alert} from "react-hot-toast";
+import { toast as alert } from "react-hot-toast";
 import { Button } from "@mui/material";
 import MetaData from "../layout/MetaData";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -16,10 +16,10 @@ import {
 import Loader from "../layout/Loader/Loader";
 import { useNavigate, useParams } from "react-router-dom";
 
-const UpdateUser = ({ history, match }) => {
+const UpdateUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  const {id} = useParams()
+  const { id } = useParams()
 
   const { loading, error, user } = useSelector((state) => state.userDetails);
 
@@ -58,7 +58,7 @@ const UpdateUser = ({ history, match }) => {
       navigate("/admin/users");
       dispatch({ type: UPDATE_USER_RESET });
     }
-  }, [dispatch, alert, error,navigate, isUpdated, updateError, user, userId]);
+  }, [dispatch,   error, navigate, isUpdated, updateError, user, userId]);
 
   const updateUserSubmitHandler = (e) => {
     e.preventDefault();
@@ -73,7 +73,7 @@ const UpdateUser = ({ history, match }) => {
   };
 
   return (
-    <Fragment>
+    <>
       <MetaData title="Update User" />
       <div className="dashboard">
         <SideBar />
@@ -130,7 +130,7 @@ const UpdateUser = ({ history, match }) => {
           )}
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

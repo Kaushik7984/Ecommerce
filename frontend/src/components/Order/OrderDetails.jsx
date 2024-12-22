@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import {   useEffect } from "react";
 import "./OrderDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
@@ -24,11 +24,11 @@ const OrderDetails = () => {
     }, [dispatch, error, id]);
 
     return (
-        <Fragment>
+       <>
             {loading ? (
                 <Loader />
             ) : (
-                <Fragment>
+               <>
                     <MetaData title="Order Details" />
                     <div className="orderDetailsPage">
                         <div className="orderDetailsContainer">
@@ -109,9 +109,9 @@ const OrderDetails = () => {
                             </div>
                         </div>
                     </div>
-                </Fragment>
+                </>
             )}
-        </Fragment>
+        </>
     );
 };
 

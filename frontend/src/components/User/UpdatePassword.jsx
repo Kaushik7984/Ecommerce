@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import {   useState, useEffect } from "react";
 import "./UpdatePassword.css";
 import Loader from "../layout/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
@@ -48,14 +48,14 @@ const UpdatePassword = () => {
         type: UPDATE_PASSWORD_RESET,
       });
     }
-  }, [dispatch, error, alert, history, isUpdated]);
+  }, [dispatch, error, navigate, isUpdated]);
 
   return (
-    <Fragment>
+   <>
       {loading ? (
         <Loader />
       ) : (
-        <Fragment>
+       <>
           <MetaData title="Change Password" />
           <div className="updatePasswordContainer">
             <div className="updatePasswordBox">
@@ -104,9 +104,9 @@ const UpdatePassword = () => {
               </form>
             </div>
           </div>
-        </Fragment>
+        </>
       )}
-    </Fragment>
+    </>
   );
 };
 

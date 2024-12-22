@@ -1,5 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
 import "./Home.css";
 import MetaData from "../layout/MetaData";
 import ProductCard from "./ProductCard";
@@ -8,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import toast from 'react-hot-toast';
 import ToastContainer from "./ToastContainer";
-import { Details, ExpandMore, Mouse, UnfoldMore } from "@mui/icons-material";
+import { UnfoldMore } from "@mui/icons-material";
 import { Button } from "@mui/material";
 
 const Home = () => {
@@ -34,14 +33,14 @@ const Home = () => {
     }, [dispatch, error, hasShownError]);
 
     return (
-        <Fragment>
+        <>
             <ToastContainer />
 
             <MetaData title={"Home"} />
             {loading ? (
                 <Loader />
             ) : (
-                <Fragment>
+                <>
                     <div className="banner">
                         <img src="/logo.png" alt="" />
                         <p>Welcome to Ecommerce</p>
@@ -49,7 +48,7 @@ const Home = () => {
 
                         <a href="#container">
                             <Button>
-                              Scroll<UnfoldMore />
+                                Scroll<UnfoldMore />
                             </Button>
                         </a>
                     </div>
@@ -60,9 +59,9 @@ const Home = () => {
                             <ProductCard key={product._id} product={product} />
                         ))}
                     </div>
-                </Fragment>
+                </>
             )}
-        </Fragment>
+        </>
     );
 };
 

@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./UpdateProfile.css";
 import Loader from "../layout/Loader/Loader";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -8,14 +8,14 @@ import { clearErrors, updateProfile, loadUser } from "../../actions/userAction";
 import toast from "react-hot-toast";
 import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 import MetaData from "../layout/MetaData";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const UpdateProfile = () => {
   const dispatch = useDispatch();
-  const navigate =useNavigate()
-  
+  const navigate = useNavigate()
+
   const { user } = useSelector((state) => state.user);
-  const { error,     isUpdated, loading } = useSelector((state) => state.profile);
+  const { error, isUpdated, loading } = useSelector((state) => state.profile);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -68,13 +68,13 @@ const UpdateProfile = () => {
         type: UPDATE_PROFILE_RESET,
       });
     }
-  }, [dispatch, error, user, isUpdated]);
+  }, [dispatch, error, user, isUpdated, navigate]);
   return (
-    <Fragment>
+    <>
       {loading ? (
         <Loader />
       ) : (
-        <Fragment>
+        <>
           <MetaData title="Update Profile" />
           <div className="updateProfileContainer">
             <div className="updateProfileBox">
@@ -125,9 +125,9 @@ const UpdateProfile = () => {
               </form>
             </div>
           </div>
-        </Fragment>
+        </>
       )}
-    </Fragment>
+    </>
   );
 };
 

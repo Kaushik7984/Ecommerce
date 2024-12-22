@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import "./Products.css"
 import { useSelector, useDispatch } from "react-redux";
 import { getProduct, clearErrors } from "../../actions/productAction";
@@ -50,14 +50,14 @@ const Products = () => {
             dispatch(clearErrors());
         }
 
-        dispatch(getProduct(keyword, currentPage, price, category,ratings));
-    }, [dispatch, keyword, currentPage, price, error, category,ratings]);
+        dispatch(getProduct(keyword, currentPage, price, category, ratings));
+    }, [dispatch, keyword, currentPage, price, error, category, ratings]);
 
     return (
-        <Fragment >
+        <   >
             {loading ? (<Loader />) : (
-                <Fragment>
-                    <MetaData title="Products/Ecommerce"/>
+                <>
+                    <MetaData title="Products/Ecommerce" />
                     <h2 className="productsHeading">Products</h2>
                     <div className="products">
                         {products &&
@@ -68,43 +68,43 @@ const Products = () => {
                     </div>
                     {keyword && (
                         <div className="filterBox">
-                        <Typography>Price</Typography>
-                        <Slider
-                            value={price}
-                            onChange={(event, newPrice) => setPrice(newPrice)}
-                            valueLabelDisplay="auto"
-                            aria-labelledby="range-slider"
-                            min={0}
-                            max={250000}
-                        />
-
-                        <Typography>Categories</Typography>
-                        <ul className="categoryBox">
-                            {categories.map((category) => (
-                                <li
-                                    className="category-link"
-                                    key={category}
-                                    onClick={() => setCategory(category)}
-                                >
-                                    {category}
-                                </li>
-                            ))}
-                        </ul>
-
-                        <fieldset>
-                            <Typography component="legend">Ratings Above</Typography>
+                            <Typography>Price</Typography>
                             <Slider
-                                value={ratings}
-                                onChange={(e, newRating) => {
-                                    setRatings(newRating);
-                                }}
-                                aria-labelledby="continuous-slider"
+                                value={price}
+                                onChange={(event, newPrice) => setPrice(newPrice)}
                                 valueLabelDisplay="auto"
+                                aria-labelledby="range-slider"
                                 min={0}
-                                max={5}
+                                max={250000}
                             />
-                        </fieldset>
-                    </div>
+
+                            <Typography>Categories</Typography>
+                            <ul className="categoryBox">
+                                {categories.map((category) => (
+                                    <li
+                                        className="category-link"
+                                        key={category}
+                                        onClick={() => setCategory(category)}
+                                    >
+                                        {category}
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <fieldset>
+                                <Typography component="legend">Ratings Above</Typography>
+                                <Slider
+                                    value={ratings}
+                                    onChange={(e, newRating) => {
+                                        setRatings(newRating);
+                                    }}
+                                    aria-labelledby="continuous-slider"
+                                    valueLabelDisplay="auto"
+                                    min={0}
+                                    max={5}
+                                />
+                            </fieldset>
+                        </div>
                     )}
                     {resultPerPage < productsCount && (
                         <div className="paginationBox">
@@ -124,11 +124,11 @@ const Products = () => {
                             />
                         </div>
                     )}
-                </Fragment>
+                </>
             )
 
             }
-        </Fragment>
+        </>
     )
 }
 

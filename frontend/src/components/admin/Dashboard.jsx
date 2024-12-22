@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import Sidebar from "./Sidebar";
 import "./Dashboard.css";
 import { Typography } from "@mui/material";

@@ -1,5 +1,4 @@
-
-import React, { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./NewProduct.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, createProduct } from "../../actions/productAction";
@@ -96,7 +95,7 @@ const NewProduct = () => {
 
 
   return (
-    <Fragment>
+    <>
       <MetaData title="Create Product" />
       <div className="dashboard">
         <Sidebar />
@@ -188,7 +187,7 @@ const NewProduct = () => {
           </form>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

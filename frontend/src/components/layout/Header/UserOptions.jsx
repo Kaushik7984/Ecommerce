@@ -1,5 +1,5 @@
 
-import React, { Fragment, useState } from "react";
+import {   useState } from "react";
 import "./Header.css";
 import Backdrop from "@mui/material/Backdrop";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -62,7 +62,7 @@ const UserOptions = ({ user }) => {
   }
 
   return (
-    <Fragment>
+   <>
       <Backdrop open={open} style={{ zIndex: "10" }} />
       <SpeedDial
         ariaLabel="SpeedDial tooltip example"
@@ -90,7 +90,7 @@ const UserOptions = ({ user }) => {
           />
         ))}
       </SpeedDial>
-    </Fragment>
+    </>
   );
 };
 

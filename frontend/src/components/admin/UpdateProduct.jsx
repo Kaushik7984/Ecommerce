@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
     clearErrors,
@@ -17,10 +17,10 @@ import Sidebar from "./Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 import { useNavigate, useParams } from "react-router-dom";
 
-const UpdateProduct = ({ history, match }) => {
+const UpdateProduct = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    const{id} = useParams();
+    const { id } = useParams();
 
     const { error, product } = useSelector((state) => state.productDetails);
 
@@ -38,7 +38,7 @@ const UpdateProduct = ({ history, match }) => {
     const [images, setImages] = useState([]);
     const [oldImages, setOldImages] = useState([]);
     const [imagesPreview, setImagesPreview] = useState([]);
- 
+
     const categories = [
         "Laptop",
         "Footwear",
@@ -80,7 +80,7 @@ const UpdateProduct = ({ history, match }) => {
         }
     }, [
         dispatch,
-        alert,
+        navigate,
         error,
         isUpdated,
         productId,
@@ -127,7 +127,7 @@ const UpdateProduct = ({ history, match }) => {
     };
 
     return (
-        <Fragment>
+        <>
             <MetaData title="Create Product" />
             <div className="dashboard">
                 <Sidebar />
@@ -231,7 +231,7 @@ const UpdateProduct = ({ history, match }) => {
                     </form>
                 </div>
             </div>
-        </Fragment>
+        </>
     );
 };
 

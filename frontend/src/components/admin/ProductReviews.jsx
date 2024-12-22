@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import {   useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import "./ProductReviews.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -52,7 +52,7 @@ const ProductReviews = () => {
       navigate("/admin/reviews");
       dispatch({ type: DELETE_REVIEW_RESET });
     }
-  }, [dispatch, alert, error, deleteError, navigate, isDeleted]);
+  }, [dispatch,   error, deleteError, navigate, isDeleted]);
 
   const columns = [
     { field: "id", headerName: "Review ID", minWidth: 200, flex: 0.5 },
@@ -88,7 +88,7 @@ const ProductReviews = () => {
   })) : [];
 
   return (
-    <Fragment>
+   <>
       <MetaData title={`All Reviews - Admin`} />
 
       <div className="dashboard">
@@ -133,7 +133,7 @@ const ProductReviews = () => {
           )}
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 
