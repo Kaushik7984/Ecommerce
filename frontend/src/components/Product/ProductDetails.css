@@ -206,6 +206,10 @@
     height: unset;
   }
 
+  .CarouselImage{
+    margin-left: 6vmax;
+  }
+
   .ProductDetails > div:last-child {
     align-items: center;
   }

@@ -105,6 +105,8 @@
 @media screen and (max-width: 600px) {
   .products{
     padding: 0 ;
+    justify-content: space-evenly;
+    gap: 20px;
   }
   .filterBox {
     width: 20vmax;
