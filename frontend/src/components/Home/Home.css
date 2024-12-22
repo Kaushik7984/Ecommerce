@@ -1,5 +1,5 @@
 .banner {
-    background-image: url("bgi.jpg");
+    background-image: url("/bgi.jpg");
     /* background: linear-gradient(112.1deg, rgb(41, 95, 203) 11.4%, rgb(41, 44, 77) 70.2%); */
     background-position: center;
     background-repeat: no-repeat;
