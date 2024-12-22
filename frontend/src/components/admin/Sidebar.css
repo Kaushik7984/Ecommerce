@@ -43,6 +43,7 @@
 @media (max-width: 768px) {
   .sidebar {
    margin-top: 20px;
+   border: none;
    
   }
   .sidebar > a > img {
