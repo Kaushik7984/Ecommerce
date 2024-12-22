@@ -30,7 +30,7 @@ import Payment from "./components/Cart/Payment.jsx";
 import OrderSuccess from "./components/Cart/OrderSuccess.jsx";
 import MyOrders from "./components/Order/MyOrders.jsx";
 import OrderDetails from "./components/Order/OrderDetails.jsx";
-import Dashboard from "./components/Admin/Dashboard.jsx";
+import Dashboard from "./components/Admin/Dashboard";
 import ProductList from "./components/Admin/ProductList.jsx";
 import NewProduct from "./components/Admin/NewProduct.jsx";
 import UpdateProduct from "./components/Admin/UpdateProduct.jsx";
