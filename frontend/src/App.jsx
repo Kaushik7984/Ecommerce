@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from "react";  // Import Suspense for lazy loading
+import React, { useEffect, useState, Suspense } from "react"; 
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -45,7 +45,6 @@ const ProductReviews = React.lazy(() => import("./components/Admin/ProductReview
 import About from "./components/layout/About/About.jsx";
 import Contact from "./components/layout/Contact/Contact.jsx";
 import NotFound from "./components/layout/Not Found/NotFound.jsx";
-import Loader from "./components/layout/Loader/Loader.jsx";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -78,7 +77,7 @@ function App() {
       <Header />
       {isAuthenticated && <UserOptions user={user} />}
 
-      <Suspense fallback={<Loader />}> 
+      <Suspense fallback={<div>...loading</div>}> 
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetails />} />
