@@ -32,15 +32,15 @@ import MyOrders from "./components/Order/MyOrders.jsx";
 import OrderDetails from "./components/Order/OrderDetails.jsx";
 
 // Use lazy loading for Dashboard and other admin components
-const Dashboard = React.lazy(() => import("./components/Admin/Dashboard.jsx"));
-const ProductList = React.lazy(() => import("./components/Admin/ProductList.jsx"));
-const NewProduct = React.lazy(() => import("./components/Admin/NewProduct.jsx"));
-const UpdateProduct = React.lazy(() => import("./components/Admin/UpdateProduct.jsx"));
-const OrderList = React.lazy(() => import("./components/Admin/OrderList.jsx"));
-const ProcessOrder = React.lazy(() => import("./components/Admin/ProcessOrder.jsx"));
-const UsersList = React.lazy(() => import("./components/Admin/UsersList.jsx"));
-const UpdateUser = React.lazy(() => import("./components/Admin/UpdateUser.jsx"));
-const ProductReviews = React.lazy(() => import("./components/Admin/ProductReviews.jsx"));
+const Dashboard = React.lazy(() => import("./components/admin/Dashboard.jsx"));
+const ProductList = React.lazy(() => import("./components/admin/ProductList.jsx"));
+const NewProduct = React.lazy(() => import("./components/admin/NewProduct.jsx"));
+const UpdateProduct = React.lazy(() => import("./components/admin/UpdateProduct.jsx"));
+const OrderList = React.lazy(() => import("./components/admin/OrderList.jsx"));
+const ProcessOrder = React.lazy(() => import("./components/admin/ProcessOrder.jsx"));
+const UsersList = React.lazy(() => import("./components/admin/UsersList.jsx"));
+const UpdateUser = React.lazy(() => import("./components/admin/UpdateUser.jsx"));
+const ProductReviews = React.lazy(() => import("./components/admin/ProductReviews.jsx"));
 
 import About from "./components/layout/About/About.jsx";
 import Contact from "./components/layout/Contact/Contact.jsx";
