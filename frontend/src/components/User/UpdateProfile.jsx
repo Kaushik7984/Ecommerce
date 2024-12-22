@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./UpdateProfile.css";
-import Loader from "../layout/Loader/Loader";
+import Loader from "../layout/loader/Loader";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import FaceIcon from "@mui/icons-material/Face";
 import { useDispatch, useSelector } from "react-redux";

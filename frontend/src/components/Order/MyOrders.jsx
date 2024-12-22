@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./MyOrders.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, myOrders } from "../../actions/orderAction";
-import Loader from "../layout/Loader/Loader";
+import Loader from "../layout/loader/Loader";
 import { Link } from "react-router-dom";
 import { toast as alert } from "react-hot-toast";
 import MetaData from "../layout/MetaData";

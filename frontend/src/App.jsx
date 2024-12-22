@@ -45,7 +45,7 @@ const ProductReviews = React.lazy(() => import("./components/admin/ProductReview
 import About from "./components/layout/About/About.jsx";
 import Contact from "./components/layout/Contact/Contact.jsx";
 import NotFound from "./components/layout/Not Found/NotFound.jsx";
-import Loader from "./components/layout/Loader/Loader.jsx";
+import Loader from "./components/layout/loader/Loader.jsx";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);

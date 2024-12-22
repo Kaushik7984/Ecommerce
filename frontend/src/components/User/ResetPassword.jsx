@@ -1,6 +1,6 @@
 import {   useState, useEffect } from "react";
 import "./ResetPassword.css";
-import Loader from "../layout/Loader/Loader";
+import Loader from "../layout/loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, resetPassword } from "../../actions/userAction";
 import {toast as alert} from "react-hot-toast";

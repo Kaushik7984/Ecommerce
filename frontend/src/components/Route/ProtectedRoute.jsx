@@ -1,7 +1,7 @@
   
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
-import Loader from "../layout/Loader/Loader.jsx";
+import Loader from "../layout/loader/Loader.jsx";
 
 
 const ProtectedRoute = ({ isAdmin }) => {

@@ -4,7 +4,7 @@ import MetaData from "../layout/MetaData";
 import ProductCard from "./ProductCard";
 import { clearErrors, getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
-import Loader from "../layout/Loader/Loader";
+import Loader from "../layout/loader/Loader";
 import toast from 'react-hot-toast';
 import ToastContainer from "./ToastContainer";
 import { UnfoldMore } from "@mui/icons-material";
