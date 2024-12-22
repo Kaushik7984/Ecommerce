@@ -4,7 +4,7 @@ import "./ProductDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductDetails, clearErrors, newReview } from "../../actions/productAction";
 import ReviewCard from "./ReviewCard.jsx";
-import Loader from "../layout/Loader/Loader";
+import Loader from "../layout/Loader/Loader.jsx";
 import MetaData from "../layout/MetaData.jsx";
 import ToastContainer from "../Home/ToastContainer.jsx";
 import toast from "react-hot-toast";

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import "./Products.css"
 import { useSelector, useDispatch } from "react-redux";
 import { getProduct, clearErrors } from "../../actions/productAction";
-import Loader from '../layout/Loader/Loader';
+import Loader from '../layout/Loader/Loader.jsx';
 import ProductCard from '../Home/ProductCard';
 import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
