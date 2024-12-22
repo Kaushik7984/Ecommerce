@@ -32,7 +32,7 @@ import MyOrders from "./components/Order/MyOrders.jsx";
 import OrderDetails from "./components/Order/OrderDetails.jsx";
 
 // Use lazy loading for Dashboard and other admin components
-const Dashboard = React.lazy(() => import("./components/Admin/Dashboard"));
+const Dashboard = React.lazy(() => import("./components/Admin/Dashboard.jsx"));
 const ProductList = React.lazy(() => import("./components/Admin/ProductList.jsx"));
 const NewProduct = React.lazy(() => import("./components/Admin/NewProduct.jsx"));
 const UpdateProduct = React.lazy(() => import("./components/Admin/UpdateProduct.jsx"));
