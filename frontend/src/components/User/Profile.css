@@ -1,6 +1,6 @@
 .profileContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     height: 100vh;
     width: 100vw;
@@ -9,14 +9,14 @@
     box-sizing: border-box;
   }
   
-  .profileContainer > div:first-child {
+  .first {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
   
-  .profileContainer > div:last-child {
+  .second {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +46,7 @@
     transform: scale(1.1);
   }
   
-  .profileContainer a {
+ .editprofilebtn {
     background-color: #c0392b;
     color: #fff;
     font-size: 1rem;
@@ -58,24 +58,24 @@
     margin-top: 1rem;
   }
   
-  .profileContainer a:hover {
+ .editprofilebtn:hover {
     background-color: #a93226;
   }
   
-  .profileContainer div:last-child h4 {
+ .second h4 {
     color: #34495e;
     font-size: 1.3rem;
     font-family: 'Roboto', sans-serif;
     margin-bottom: 0.5rem;
   }
   
-  .profileContainer div:last-child p {
+  .second p {
     color: #7f8c8d;
     font-size: 1.1rem;
     font-family: 'Roboto', sans-serif;
   }
   
-  .profileContainer div:last-child a {
+ .myorderbtn {
     background-color: #34495e;
     color: #fff;
     font-size: 1rem;
@@ -85,15 +85,23 @@
     border-radius: 4px;
     transition: background-color 0.3s ease;
     margin-top: 1rem;
+    text-decoration: none;
   }
   
-  .profileContainer div:last-child div:last-child {
+ .last {
     display: flex;
     flex-direction: column;
     gap: 1.5rem; /* Adds gap between buttons */
   }
+   
+ .link a{
+    color: red;
+    cursor: pointer;
+    text-decoration: none;
+  }
+ 
   
-  .profileContainer div:last-child a:hover {
+ .myorderbtn:hover {
     background-color: #2c3e50;
   }
   
@@ -103,9 +111,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      gap: 20px;
     }
   
-    .profileContainer > div:last-child {
+    .second {
       padding-left: 0;
       text-align: center;
     }
@@ -119,15 +128,15 @@
       height: 140px;
     }
   
-    .profileContainer div:last-child h4 {
+    .second h4 {
       font-size: 1.1rem;
     }
   
-    .profileContainer div:last-child p {
+    .second p {
       font-size: 1rem;
     }
   
-    .profileContainer div:last-child a {
+   .myorderbtn {
       font-size: 0.9rem;
       padding: 0.6rem 1.2rem;
     }
@@ -145,15 +154,15 @@
       height: 120px;
     }
   
-    .profileContainer div:last-child h4 {
+    .second h4 {
       font-size: 1rem;
     }
   
-    .profileContainer div:last-child p {
+    .second p {
       font-size: 0.9rem;
     }
   
-    .profileContainer div:last-child a {
+   .myorderbtn {
       font-size: 0.9rem;
       padding: 0.5rem 1rem;
     

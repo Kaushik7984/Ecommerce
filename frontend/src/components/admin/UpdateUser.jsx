@@ -15,6 +15,7 @@ import {
 } from "../../actions/userAction";
 import Loader from "../layout/loader/Loader";
 import { useNavigate, useParams } from "react-router-dom";
+import "./NewProduct.css";
 
 const UpdateUser = () => {
   const dispatch = useDispatch();
