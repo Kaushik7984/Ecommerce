@@ -93,8 +93,15 @@
   }
   
   @media screen and (max-width: 600px) {
+    .aboutSectionContainer {
+      top: 45%;
+    }
     .aboutSectionContainer > div {
       display: block;
+    }
+
+    .aboutSectionContainer > div > div {
+      margin-top: -45px;
     }
   
     .aboutSectionContainer > h1 {
