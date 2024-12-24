@@ -47,6 +47,7 @@ h2 {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
+    width: 91%;
 }
 
 .contactForm textarea {
