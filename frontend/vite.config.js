@@ -12,6 +12,10 @@ export default defineConfig({
         },
       },
     },
-    chunkSizeWarningLimit: 3000, 
+    chunkSizeWarningLimit: 3000, // Warning limit for chunk size
+  },
+  server: {
+    // Enables SPA routing in the development server
+    historyApiFallback: true,
   },
 });
