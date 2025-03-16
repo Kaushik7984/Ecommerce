@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 import ToastContainer from "./ToastContainer";
 import { UnfoldMore } from "@mui/icons-material";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -57,8 +58,17 @@ const Home = () => {
                     <div className="container" id="container">
                         {products && products.map(product => (
                             <ProductCard key={product._id} product={product} />
+
                         ))}
                     </div>
+                    <div className="container">
+
+                        <Link to="/products">
+                            <Button style={{boxShadow:"1px 1px 1px 1px"}}>View more products...</Button>
+                        </Link>
+
+                    </div>
+
                 </>
             )}
         </>
